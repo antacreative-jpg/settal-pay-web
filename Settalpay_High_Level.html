@@ -245,26 +245,81 @@
     </section>
     <section id="home" class="screen">
      <header class="flex items-center justify-between">
-      <div>
-       <div class="flex items-center gap-2"><svg class="home-logo" viewBox="0 0 120 120" role="img" aria-label="SETTAL PAY"><use href="01_APP_WEB/assets/logo_SETTAL_PAY_Plan_de_travail_1-02-removebg-preview (2).png"/></svg><p data-i18n="home-kicker" class="eyebrow" style="color: #296740;">MON ESPACE VERT</p></div>
-       <h1 class="headline mt-1" style="color: #00290B;"><span data-i18n="home-greeting">Bonjour</span> ANTA LAYE 👋</h1>
-      </div><img class="w-12 h-12 rounded-[18px] object-cover border-3 border-white shadow-lg" loading="lazy" src="01_APP_WEB/assets/image-removebg-preview (82) (1).png" alt="">
-     </header>
-     <article class="balance mt-6" style="background: linear-gradient(135deg,#00290B,#296740);">
-      <p data-i18n="points-label" class="text-white/70 text-sm" style="color: #FFFFFFBF;">Points disponibles</p>
-      <div class="flex justify-between items-end">
-       <strong id="points-display" class="text-3xl" style="color:#F3B706">1 250 pts</strong><span data-i18n="eco-level" class="px-3 py-1 rounded-full text-xs bg-white/15" style="background: rgba(255, 255, 255, 0.15); color: rgb(255, 255, 255);">Eco Bronze</span>
-      </div>
-      <div class="border-t border-white/15 mt-5 pt-4">
-       <p data-i18n="balance-label" class="text-white/70 text-xs" style="color: #FFFFFFBF;">Solde récompenses</p><strong id="balance-display" class="text-xl">6 500 FCFA</strong>
-      </div>
-     </article>
-     <div class="flex justify-between items-center mt-6">
-      <h2 data-i18n="quick-title" class="font-bold" style="color: #00290B;">Actions rapides</h2>
-     </div>
-     <div class="quick-grid mt-3">
-      <button data-i18n="quick-scan" class="quick bg-[#29674022] text-[#296740]" type="button" onclick="go('scanner')" style="background: #29674022; color: #296740;">Scanner QR Code</button><button data-i18n="quick-deposit" class="quick bg-[#F3B706] text-[#00290B]" type="button" onclick="go('scanner')" style="background: #F3B706; color: #00290B;">Déposer une bouteille</button><button data-i18n="quick-challenges" class="quick glass" type="button" onclick="go('challenges')" style="background: rgb(255, 255, 255); color: #00290B;">Défis de la semaine</button><button class="quick glass" type="button" onclick="go('impact')" style="background: rgb(255, 255, 255); color: #00290B;" data-i18n="x01">Mon impact & IA</button><button data-i18n="quick-shop" class="quick glass" type="button" onclick="go('shop')" style="background: rgb(255, 255, 255); color: #00290B;">Récompenses</button>
-     </div>
+     
+<div>
+  <div class="flex items-center gap-2">
+    <img
+      class="home-logo"
+      src="01_APP_WEB/assets/logo_SETTAL_PAY.png"
+      alt="Logo SETTAL PAY"
+    />
+    <p data-i18n="home-kicker" class="eyebrow" style="color: #296740;">
+      MON ESPACE VERT
+    </p>
+  </div>
+
+  <h1 class="headline mt-1" style="color: #00290B;">
+    <span data-i18n="home-greeting">Bonjour</span> ANTA LAYE 👋
+  </h1>
+</div>
+
+<img
+  class="w-12 h-12 rounded-[18px] object-cover border-3 border-white shadow-lg"
+  loading="lazy"
+  src="assets/anta-profile.png"
+  alt="Photo de profil Anta"
+/>
+</header>
+
+<article class="balance mt-6" style="background: linear-gradient(135deg,#00290B,#296740);">
+  <p data-i18n="points-label" class="text-white/70 text-sm" style="color: #FFFFFFBF;">
+    Points disponibles
+  </p>
+
+  <div class="flex justify-between items-end">
+    <strong id="points-display" class="text-3xl" style="color:#F3B706">
+      1 250 pts
+    </strong>
+    <span data-i18n="eco-level" class="px-3 py-1 rounded-full text-xs bg-white/15" style="background: rgba(255, 255, 255, 0.15); color: rgb(255, 255, 255);">
+      Eco Bronze
+    </span>
+  </div>
+
+  <div class="border-t border-white/15 mt-5 pt-4">
+    <p data-i18n="balance-label" class="text-white/70 text-xs" style="color: #FFFFFFBF;">
+      Solde récompenses
+    </p>
+    <strong id="balance-display" class="text-xl">6 500 FCFA</strong>
+  </div>
+</article>
+
+<div class="flex justify-between items-center mt-6">
+  <h2 data-i18n="quick-title" class="font-bold" style="color: #00290B;">
+    Actions rapides
+  </h2>
+</div>
+
+<div class="quick-grid mt-3">
+  <button data-i18n="quick-scan" class="quick bg-[#29674022] text-[#296740]" type="button" onclick="go('scanner')" style="background: #29674022; color: #296740;">
+    Scanner QR Code
+  </button>
+
+  <button data-i18n="quick-deposit" class="quick bg-[#F3B706] text-[#00290B]" type="button" onclick="go('scanner')" style="background: #F3B706; color: #00290B;">
+    Déposer une bouteille
+  </button>
+
+  <button data-i18n="quick-challenges" class="quick glass" type="button" onclick="go('challenges')" style="background: rgb(255, 255, 255); color: #00290B;">
+    Défis de la semaine
+  </button>
+
+  <button class="quick glass" type="button" onclick="go('impact')" style="background: rgb(255, 255, 255); color: #00290B;" data-i18n="x01">
+    Mon impact & IA
+  </button>
+
+  <button data-i18n="quick-shop" class="quick glass" type="button" onclick="go('shop')" style="background: rgb(255, 255, 255); color: #00290B;">
+    Récompenses
+  </button>
+</div>
      <article class="glass p-4 mt-5 flex gap-3 items-center" style="background: rgb(255, 255, 255);">
       <div class="w-11 h-11 grid place-items-center rounded-2xl bg-[#F3B70626] text-[#00290B]">
        <i data-lucide="leaf"></i>
