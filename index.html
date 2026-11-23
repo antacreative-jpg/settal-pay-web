@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#00290B">
+  <title>SETTAL PAY — Smart Recycling Ecosystem</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22%3E%3Cdefs%3E%3ClinearGradient id=%22gSigF%22 gradientUnits=%22userSpaceOnUse%22 x1=%2228%22 y1=%2292%22 x2=%2272%22 y2=%2262%22%3E%3Cstop offset=%220%22 stop-color=%22%23F3B706%22/%3E%3Cstop offset=%221%22 stop-color=%22%233D8652%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Cpath d=%22M62 60C40 56 26 48 32 34C38 20 70 16 90 36%22 fill=%22none%22 stroke=%22%23296740%22 stroke-width=%2213%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%0A%3Cpath d=%22M58 60C80 64 94 72 88 86C82 100 50 104 30 84%22 fill=%22none%22 stroke=%22url%28%23gSigF%29%22 stroke-width=%2213%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%0A%3Cpath d=%22M98.5 44.5L80.1 43.1L97.1 26.1Z%22 fill=%22%23296740%22 stroke=%22%23296740%22 stroke-width=%224%22 stroke-linejoin=%22round%22/%3E%0A%3Cpath d=%22M21.5 75.5L39.9 76.9L22.9 93.9Z%22 fill=%22%23F3B706%22 stroke=%22%23F3B706%22 stroke-width=%224%22 stroke-linejoin=%22round%22/%3E%0A%3Ccircle cx=%2260%22 cy=%2260%22 r=%2216%22 fill=%22%23F3B706%22 stroke=%22%23fff%22 stroke-width=%223%22/%3E%0A%3Ccircle cx=%2260%22 cy=%2260%22 r=%229%22 fill=%22none%22 stroke=%22%2300290B%22 stroke-opacity=%22.35%22 stroke-width=%222.5%22/%3E%3C/svg%3E">
+
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+
+  .intel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .metric-card{padding:16px;border-radius:22px;background:#fff;border:1px solid #29674026;box-shadow:0 10px 28px #29674010}
+  .metric-card .metric{font-size:25px;font-weight:800;color:#296740;letter-spacing:-.04em}
+  .metric-card small{display:block;margin-top:4px;color:#00290B9E;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  .trend-up{color:#3D8652;font-size:11px;font-weight:800}
+  .ai-panel{padding:18px;border-radius:26px;background:linear-gradient(145deg,#00290B,#296740);color:#fff;position:relative;overflow:hidden}
+  .ai-panel:after{content:"";position:absolute;width:170px;height:170px;right:-80px;top:-90px;border:28px solid #ffffff12;border-radius:50%}
+  .ai-panel>*{position:relative;z-index:1}
+  .prediction{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+  .prediction-bar{height:10px;border-radius:99px;background:#ffffff22;overflow:hidden}
+  .prediction-bar b{display:block;height:100%;width:78%;background:linear-gradient(90deg,#3D8652,#F3B706);border-radius:99px}
+  .data-table{width:100%;border-collapse:collapse;font-size:11px}
+  .data-table th,.data-table td{padding:10px 6px;border-bottom:1px solid #29674026;text-align:left}
+  .data-table th{color:#00290B9E;font-size:9px;text-transform:uppercase;letter-spacing:.08em}
+  .status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;background:#3D8652;box-shadow:0 0 0 4px #3D865218}
+  .offline-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:#2967400F;color:#296740;font-size:10px;font-weight:800}
+  .privacy-note{font-size:10px;line-height:1.5;color:#00290B9E;background:#2967400F;border-radius:15px;padding:12px}
+  .impact-hero{padding:22px;border-radius:27px;background:linear-gradient(135deg,#00290B,#296740);color:#fff}
+  .impact-number{font-size:38px;font-weight:900;letter-spacing:-.06em}
+  .mini-chart{height:125px;width:100%;display:block}
+  .chip{display:inline-flex;align-items:center;padding:7px 10px;border-radius:999px;background:#29674017;color:#296740;font-size:10px;font-weight:800}
+  .danger-chip{background:#F3B70626;color:#00290B}
+
+    :root{--deep:#00290B;--forest:#296740;--leaf:#3D8652;--gold:#F3B706;--ink:#00290B;--mist:#f5f7f6;--line:#29674026;--signature:linear-gradient(135deg,#F3B706,#296740)}
+    *{box-sizing:border-box} body{margin:0;background:#00290B;font-family:"DM Sans",sans-serif;color:var(--ink)}
+    button,input,select{font:inherit} button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+    .app-shell{width:100%;min-height:100vh;display:flex;justify-content:center;padding:18px;background:radial-gradient(circle at 10% 5%,#3D865288 0,transparent 25%),radial-gradient(circle at 100% 100%,#F3B70648 0,transparent 25%),#00290B}
+    .phone{width:100%;max-width:430px;min-height:calc(100vh - 36px);position:relative;overflow:hidden;border-radius:34px;background:var(--mist);box-shadow:0 28px 80px #0008}
+    .screen{display:none;min-height:calc(100vh - 36px);padding:26px 21px 102px}.screen.active{display:block;animation:enter .5s cubic-bezier(.22,1,.36,1) both}
+    .screen.full{padding:0}.headline{font-family:Fraunces,serif;letter-spacing:-.045em;font-size:29px;line-height:1.05}.eyebrow{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#296740}
+    .glass{background:#ffffffc9;border:1px solid #ffffffd9;box-shadow:0 14px 36px #29674015;backdrop-filter:blur(16px)}
+    .card{border-radius:25px}.primary{border:0;border-radius:18px;min-height:54px;display:flex;justify-content:center;align-items:center;gap:9px;font-weight:700;box-shadow:0 10px 20px #29674035;transition:transform .18s,box-shadow .18s}.primary:active,.tap:active{transform:scale(.965);box-shadow:none}
+    .back{border:0;background:transparent;color:var(--forest);padding:0}.input-label{display:block;margin:16px 0 7px 4px;font-size:13px;font-weight:700;color:#00290B}.field{width:100%;padding:15px;border-radius:16px;border:1px solid var(--line);background:white;outline:0}.field:focus{border-color:var(--leaf);box-shadow:0 0 0 4px #3D865222}
+    .brand{font-family:Fraunces,serif;letter-spacing:-.06em}.splash{display:none;position:relative;overflow:hidden;color:white;align-items:center}.splash.active{display:flex}.splash img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.2;mix-blend-mode:screen}.splash-inner{z-index:1;width:100%;min-height:calc(100vh - 36px);padding:39px 27px;display:flex;flex-direction:column;background:linear-gradient(160deg,#00290Bee,#296740c8)}
+    .mark{width:88px;height:88px;border-radius:28px;display:grid;place-items:center;background:#fff;box-shadow:inset 0 1px #ffffff88,0 15px 30px #00290B55;opacity:0;transform:scale(.4) rotate(-14deg);animation:markPop 1s cubic-bezier(.2,1.4,.4,1) .15s forwards}.mark svg{width:62px;height:62px}
+    .onboard-img{height:265px;width:100%;border-radius:30px;object-fit:cover;box-shadow:0 15px 35px #29674024}.dots{display:flex;gap:7px}.dots span{width:7px;height:7px;border-radius:9px;background:#29674040;transition:width .3s,background .3s}.dots .on{width:24px;background:var(--forest)}
+    .nav{position:absolute;bottom:0;left:0;right:0;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);padding:10px 10px 16px;background:#fffffff0;border-top:1px solid #29674026;backdrop-filter:blur(18px)}.nav button{border:0;background:transparent;color:#00290B8F;font-size:9px;font-weight:700;display:flex;gap:4px;align-items:center;flex-direction:column}.nav i{width:19px;height:19px}.nav button.current{color:var(--forest)}.nav button.current i{width:34px;height:31px;padding:6px;background:#29674022;border-radius:13px}.nav .scan-nav i{background:var(--gold);color:#00290B;border-radius:15px;width:43px;height:40px;padding:10px;margin-top:-24px;box-shadow:0 7px 17px #F3B70666}
+    .balance{position:relative;overflow:hidden;padding:22px;color:white;background:linear-gradient(135deg,#00290B,#296740)}.balance:after{content:"";position:absolute;width:180px;height:180px;right:-75px;top:-90px;border:28px solid #ffffff14;border-radius:50%}.balance>*{position:relative;z-index:1}
+    .quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.quick{min-height:107px;text-align:left;border:0;border-radius:21px;padding:15px;font-weight:700}.quick i{width:22px;height:22px;display:block;margin-bottom:19px}
+    .scan-view{height:340px;display:grid;place-items:center;position:relative;border-radius:29px;overflow:hidden;background:linear-gradient(145deg,#296740,#00290B)}.scan-view:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#fff1 0 1px,transparent 1px 29px),repeating-linear-gradient(0deg,#fff1 0 1px,transparent 1px 29px)}.frame{width:205px;height:205px;border:3px solid #3D8652;border-radius:28px;box-shadow:0 0 0 999px #0005;position:relative}.laser{position:absolute;left:8px;right:8px;height:3px;background:#F3B706;box-shadow:0 0 18px #F3B706;animation:scan 2s infinite}
+    .terminal{padding:24px;text-align:center}.pulse{margin:17px auto;width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:#29674022;color:var(--forest);animation:pulse 1.8s infinite}.pulse i{width:39px;height:39px}
+    .bottle-stage{padding:23px;text-align:center;background:linear-gradient(155deg,#29674017,#fff)}.bottle{height:113px;width:50px;margin:0 auto 15px;border:3px solid var(--leaf);border-radius:13px 13px 20px 20px;position:relative;animation:drop 1.5s infinite}.bottle:before{content:"";position:absolute;width:21px;height:15px;left:11px;top:-18px;border:3px solid var(--leaf);border-bottom:0;border-radius:5px 5px 0 0}.bottle:after{content:"";position:absolute;left:0;right:0;top:38px;height:24px;background:var(--leaf);opacity:.67}.progress{height:10px;background:#29674026;border-radius:99px;overflow:hidden}.progress b{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--leaf),var(--gold));transition:width .45s}.step{padding:14px 0;display:flex;gap:12px;align-items:center;border-bottom:1px solid #29674026;color:#00290B73}.step:last-child{border:0}.step.done{color:#296740;font-weight:700}.ai-orb{height:195px;border-radius:30px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle,#3D8652 0 8%,#29674022 9% 21%,#2967400F 22% 50%,#29674022 51%)}.ai-orb i{width:52px;height:52px;color:var(--forest);z-index:1}.ai-orb:after{content:"";width:180px;height:180px;position:absolute;border:2px solid #3D865299;border-radius:50%;animation:spin 4s linear infinite}
+    .validate{padding:30px;text-align:center}.check{width:105px;height:105px;margin:auto;border-radius:50%;display:grid;place-items:center;background:#29674022;color:var(--leaf);animation:pop .7s ease both}.check i{width:57px;height:57px}.reward{position:relative;overflow:hidden;padding:29px 19px;text-align:center;color:white;background:linear-gradient(145deg,#00290B,#296740)}.coin{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--gold);box-shadow:inset 0 0 0 3px #ffffff80;animation:coin 3s infinite}.confetti{position:absolute;width:9px;height:18px;background:#F3B706;animation:fall 2.7s infinite}.mapbox{height:265px;position:relative;overflow:hidden;border-radius:27px;background:#2967402E}.mapbox img{width:100%;height:100%;object-fit:cover;filter:saturate(.6) hue-rotate(50deg);opacity:.63}.pin{position:absolute;width:38px;height:38px;display:grid;place-items:center;border-radius:50% 50% 50% 0;transform:rotate(-45deg);color:white;box-shadow:0 5px 13px #0004}.pin i{transform:rotate(45deg);width:18px}
+    .rank{display:flex;align-items:end;justify-content:center;gap:12px;padding:16px 8px}.rank-person{text-align:center}.rank-avatar{width:58px;height:58px;border:4px solid white;border-radius:50%;object-fit:cover;box-shadow:0 7px 17px #29674022}.rank-first .rank-avatar{width:78px;height:78px;border-color:#F3B706}.podium{border-radius:16px 16px 5px 5px;background:#29674022;color:var(--forest);padding-top:9px;font-size:12px;font-weight:700}.rank-first .podium{height:78px;background:#F3B706}.rank-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #29674026}.rank-row img{width:39px;height:39px;border-radius:14px;object-fit:cover}
+    .challenge{padding:18px}.toggle{width:46px;height:27px;border:0;border-radius:99px;padding:3px;background:#29674040}.toggle span{display:block;width:21px;height:21px;border-radius:50%;background:white;transition:.2s;box-shadow:0 2px 5px #0003}.toggle.on{background:var(--leaf)}.toggle.on span{transform:translateX(19px)}.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.shop-card{overflow:hidden}.shop-card img{height:110px;width:100%;object-fit:cover}.shop-body{padding:13px}.row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #29674026}.row:last-child{border:0}
+    .profile-img{width:91px;height:91px;object-fit:cover;border-radius:30px;border:4px solid white;box-shadow:0 7px 20px #2967402c}.mini-panel{display:none;animation:enter .3s ease both}.mini-panel.show{display:block}.faq-answer{display:none;padding:0 0 14px;font-size:13px;color:#00290B9E}.faq-answer.show{display:block}
+    .dark{background:#06150A;color:#F3F7F2}.dark .screen{background:#06150A;color:#F3F7F2}.dark .glass,.dark .quick,.dark .field{background:#0D2114;color:#F3F7F2;border-color:#3D865266}.dark .quick.glass{background:#0D2114;color:#F3F7F2}.dark .nav{background:#06150AF0;border-color:#3D865266}.dark .row,.dark .step,.dark .rank-row{border-color:#3D865266}.dark .input-label{color:#F3F7F2CC}.dark .eyebrow{color:#F3B706}.dark .headline,.dark h1,.dark h2,.dark h3,.dark strong,.dark p,.dark span{color:inherit}.dark .primary{background:#3D8652!important;color:#FFFFFF!important}.dark .toggle{background:#244A31}.dark .toggle.on{background:#3D8652}.dark .lang-btn.active{background:#3D8652!important;color:#FFFFFF!important}.dark .balance,.dark .reward,.dark .ai-panel{background:linear-gradient(135deg,#06150A,#12351F)}.toast{position:absolute;left:20px;right:20px;bottom:88px;z-index:40;background:#00290B;color:white;border-radius:16px;padding:14px 16px;font-size:13px;font-weight:700;opacity:0;transform:translateY(80px);transition:.3s}.toast.show{opacity:1;transform:none}
+    .phone-prefix{flex:0 0 96px;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;padding-left:6px;padding-right:6px;font-weight:700}
+    .lang-btn.active{background:var(--forest)!important;color:#fff!important}
+    @keyframes enter{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+    @keyframes markPop{0%{opacity:0;transform:scale(.4) rotate(-14deg)}70%{opacity:1;transform:scale(1.08) rotate(3deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+    @keyframes scan{0%,100%{top:9%}50%{top:88%}}@keyframes pulse{50%{box-shadow:0 0 0 18px #3D865220}}@keyframes drop{50%{transform:translateY(9px)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pop{0%{transform:scale(.2);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1)}}@keyframes coin{50%{transform:translateY(-27px) rotate(170deg)}}@keyframes fall{0%{transform:translateY(-40px) rotate(0)}100%{transform:translateY(250px) rotate(300deg);opacity:0}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    .splash-inner>*{animation:fadeUp .6s ease both}
+    .splash-inner .eyebrow{animation-delay:.5s}.splash-inner h1{animation-delay:.62s}.splash-inner .splash-inner-slogan{animation-delay:.74s}.splash-inner button{animation-delay:.9s}
+  
+    /* ===== CHARTE V2 : vert = identité · jaune = récompense / action ===== */
+    .home-logo{width:30px;height:30px;flex:none}
+    .pin-logo{width:20px;height:20px;transform:rotate(45deg)}
+    .kiosk-pulse{width:158px;height:158px;margin:4px auto 16px;background:#2967401A}
+    .kiosk-img{width:104px;height:130px;display:block}
+    .frame:before{content:"";position:absolute;inset:-3px;border-radius:28px;border:3px solid #F3B706;
+      -webkit-mask:linear-gradient(#000,#000) top left/40px 40px no-repeat,linear-gradient(#000,#000) top right/40px 40px no-repeat,linear-gradient(#000,#000) bottom left/40px 40px no-repeat,linear-gradient(#000,#000) bottom right/40px 40px no-repeat;
+      mask:linear-gradient(#000,#000) top left/40px 40px no-repeat,linear-gradient(#000,#000) top right/40px 40px no-repeat,linear-gradient(#000,#000) bottom left/40px 40px no-repeat,linear-gradient(#000,#000) bottom right/40px 40px no-repeat}
+    .chip-gold{background:#F3B706;color:#00290B}
+    .demo-note{margin-top:14px;font-size:9px;line-height:1.5;text-align:center;color:#00290B80}
+    .eyebrow{color:#296740}
+    .pilot-card{padding:18px;border-radius:26px;background:#2967401A}
+    .live-badge{background:#F3B706;color:#00290B;font-size:10px;font-weight:800;padding:8px 14px;border-radius:999px;white-space:nowrap}
+    .pilot-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+    .pilot-grid div{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:12px;border-radius:14px;background:#ffffff80;font-size:11px}
+    .pilot-grid span{color:#00290B9E}.pilot-grid strong{color:#00290B;font-size:12px}
+    .reco-box{margin-top:12px;padding:14px;border-radius:18px;background:#fff}
+    .reco-box small{display:block;font-size:11px;color:#00290B9E;margin-bottom:6px}
+    .reco-box strong{font-size:13px;line-height:1.4;color:#00290B}
+    .rse-card{margin-top:14px;padding:18px;border-radius:26px;background:#fff;border:1px solid #29674026}
+    .rse-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:#00290B}
+    .rse-row strong{font-weight:800}
+    .rse-btn{width:100%;margin-top:12px;padding:13px;border:0;border-radius:16px;background:#296740;color:#fff;font-weight:700;font-size:13px}
+    .rse-btn:active{transform:scale(.97)}
+
+  </style>
+<style id="dark-mode-v23">
+/* ===== MODE SOMBRE V2.3 — correction du vert =====
+   Fond #06150A · surfaces #0D2114 / #12351F · texte #F3F7F2 / #A9BBAF
+   Vert d'action #3D8652 (boutons) · vert de texte #6DBA86 · jaune #F3B706 réservé aux valeurs (points, gains, actions) */
+.dark,.dark .screen{background:#06150A!important;color:#F3F7F2}
+.dark .headline,.dark h1,.dark h2,.dark h3,.dark .input-label,.dark .back{color:#F3F7F2!important}
+.dark [style*="color: #00290B"],.dark [style*="color:#00290B"],.dark [class*="text-[#00290B]"],.dark .rank-row,.dark .step,.dark .row{color:#F3F7F2!important}
+.dark [class*="text-[#00290B9"],.dark [class*="text-[#00290B8"],.dark [class*="text-[#00290B7"],.dark [class*="text-[#00290BA"],.dark [style*="color: #00290B9"],.dark [style*="color: #00290B8"],.dark [style*="color: #00290B7"],.dark [style*="color: #00290BA"],.dark .metric-card small{color:#A9BBAF!important}
+.dark .eyebrow,.dark [style*="color: #296740"],.dark [style*="color:#296740"],.dark [class*="text-[#296740]"],.dark [class*="text-[#3D8652]"],.dark .metric-card .metric,.dark .trend-up,.dark .chip,.dark .quick[style*="color: #296740"]{color:#6DBA86!important}
+/* éléments sur fond jaune : texte toujours vert très profond */
+.dark [style*="background: #F3B706"],.dark [style*="background:#F3B706"],.dark [class*="bg-[#F3B706]"],.dark .chip-gold,.dark .live-badge,.dark [style*="background: #F3B706"] *,.dark [class*="bg-[#F3B706]"] *{color:#00290B!important}
+/* surfaces claires -> surfaces sombres */
+.dark .glass,.dark .metric-card,.dark .field,.dark .bg-white,.dark [class*="bg-[#FFFFFF]"],.dark [style*="background: rgb(255, 255, 255)"],.dark [style*="background: #FFFFFF"],.dark [style*="background: #fff"]{background:#0D2114!important;border-color:#3D865247!important}
+.dark .bottle-stage{background:linear-gradient(155deg,#3D865222,#0D2114)}
+.dark .toast{background:#12351F;border:1px solid #3D865266}
+/* vert d'action plus clair que le fond (au lieu du vert principal #296740 plat) */
+.dark [class*="bg-[#296740]"],.dark [style*="background: #296740"]{background-color:#3D8652!important;color:#FFFFFF!important}
+.dark [class*="bg-[#29674022]"],.dark [class*="bg-[#2967401"]{background-color:#3D865226!important}
+.dark .nav button{color:#A9BBAF}.dark .nav button.current,.dark .nav button.active{color:#6DBA86}
+.dark .toggle span{background:#fff!important}
+.dark .balance,.dark .reward,.dark .ai-panel,.dark .impact-hero{background:linear-gradient(135deg,#0B2E17,#1E5535)!important}
+.dark .progress{background:#3D865233}
+.dark .podium{color:#F3F7F2}.dark .rank-first .podium{color:#00290B!important}
+/* panneau administrateur */
+.dark .pilot-card{background:#12351F!important}
+.dark .pilot-grid div,.dark .reco-box,.dark .rse-card{background:#0D2114!important;border-color:#3D865247!important}
+.dark .pilot-grid span,.dark .reco-box small{color:#A9BBAF!important}
+.dark .pilot-grid strong,.dark .reco-box strong,.dark .rse-row,.dark .rse-row strong{color:#F3F7F2!important}
+.dark .rse-btn{background:#3D8652!important}
+.dark .demo-note{color:#A9BBAF}
+</style>
+</head>
+<body>
+<!-- ============ ASSETS GRAPHIQUES INTÉGRÉS (SVG) ============
+     LOGO  : symbole « S + flèches + pièce » — id="logo-settal" (couleur) / id="logo-settal-mono" (monochrome, pour les marqueurs de carte)
+     KIOSQUE : visuel de la borne — id="kiosk-settal"
+     >>> PLACEHOLDER : pour utiliser votre fichier logo/kiosque d'origine, remplacez le <svg><use .../></svg> concerné
+         par <img src="assets/logo-settalpay.png" alt="SETTAL PAY"> ou <img src="assets/kiosque-settalpay.png" alt="Borne SETTAL PAY">. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="logo-settal" viewBox="0 0 120 120"><defs><linearGradient id="gSig" gradientUnits="userSpaceOnUse" x1="28" y1="92" x2="72" y2="62"><stop offset="0" stop-color="#F3B706"/><stop offset="1" stop-color="#3D8652"/></linearGradient></defs>
+<path d="M62 60C40 56 26 48 32 34C38 20 70 16 90 36" fill="none" stroke="#296740" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M58 60C80 64 94 72 88 86C82 100 50 104 30 84" fill="none" stroke="url(#gSig)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98.5 44.5L80.1 43.1L97.1 26.1Z" fill="#296740" stroke="#296740" stroke-width="4" stroke-linejoin="round"/>
+<path d="M21.5 75.5L39.9 76.9L22.9 93.9Z" fill="#F3B706" stroke="#F3B706" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="60" cy="60" r="16" fill="#F3B706" stroke="#fff" stroke-width="3"/>
+<circle cx="60" cy="60" r="9" fill="none" stroke="#00290B" stroke-opacity=".35" stroke-width="2.5"/></symbol>
+<symbol id="logo-settal-mono" viewBox="0 0 120 120"><path d="M62 60C40 56 26 48 32 34C38 20 70 16 90 36" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M58 60C80 64 94 72 88 86C82 100 50 104 30 84" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98.5 44.5L80.1 43.1L97.1 26.1Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+<path d="M21.5 75.5L39.9 76.9L22.9 93.9Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/></symbol>
+<symbol id="kiosk-settal" viewBox="0 0 160 200"><defs><linearGradient id="gKiosk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#296740"/><stop offset="1" stop-color="#00290B"/></linearGradient></defs>
+<ellipse cx="80" cy="192" rx="54" ry="6" fill="#00290B" opacity=".18"/>
+<rect x="30" y="10" width="100" height="176" rx="16" fill="url(#gKiosk)"/>
+<rect x="30" y="10" width="100" height="36" rx="16" fill="#00290B" opacity=".55"/>
+<circle cx="80" cy="28" r="13" fill="#fff"/>
+<svg x="68" y="16" width="24" height="24" viewBox="0 0 120 120"><defs><linearGradient id="gSigK" gradientUnits="userSpaceOnUse" x1="28" y1="92" x2="72" y2="62"><stop offset="0" stop-color="#F3B706"/><stop offset="1" stop-color="#3D8652"/></linearGradient></defs>
+<path d="M62 60C40 56 26 48 32 34C38 20 70 16 90 36" fill="none" stroke="#296740" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M58 60C80 64 94 72 88 86C82 100 50 104 30 84" fill="none" stroke="url(#gSigK)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98.5 44.5L80.1 43.1L97.1 26.1Z" fill="#296740" stroke="#296740" stroke-width="4" stroke-linejoin="round"/>
+<path d="M21.5 75.5L39.9 76.9L22.9 93.9Z" fill="#F3B706" stroke="#F3B706" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="60" cy="60" r="16" fill="#F3B706" stroke="#fff" stroke-width="3"/>
+<circle cx="60" cy="60" r="9" fill="none" stroke="#00290B" stroke-opacity=".35" stroke-width="2.5"/></svg>
+<rect x="44" y="56" width="72" height="52" rx="9" fill="#00290B" stroke="#3D8652" stroke-width="2"/>
+<g fill="#fff"><rect x="52" y="64" width="14" height="14" rx="2"/><rect x="94" y="64" width="14" height="14" rx="2"/><rect x="52" y="86" width="14" height="14" rx="2"/>
+<rect x="72" y="66" width="6" height="6"/><rect x="82" y="72" width="6" height="6"/><rect x="72" y="80" width="6" height="6"/><rect x="94" y="86" width="6" height="6"/><rect x="84" y="92" width="6" height="6"/><rect x="100" y="94" width="8" height="6"/><rect x="72" y="92" width="6" height="8"/></g>
+<g fill="#00290B"><rect x="56" y="68" width="6" height="6"/><rect x="98" y="68" width="6" height="6"/><rect x="56" y="90" width="6" height="6"/></g>
+<rect x="46" y="81" width="68" height="3" rx="1.5" fill="#F3B706"/>
+<rect x="46" y="118" width="68" height="46" rx="14" fill="#00290B" stroke="#F3B706" stroke-width="3"/>
+<path d="M70 130h10v-5h-10zM68 132h14l2 6v18a3 3 0 0 1-3 3h-12a3 3 0 0 1-3-3v-18z" fill="#3D8652" opacity=".85"/>
+<circle cx="102" cy="141" r="5" fill="#F3B706"/><circle cx="102" cy="141" r="2.2" fill="#00290B" opacity=".4"/>
+<rect x="64" y="172" width="32" height="5" rx="2.5" fill="#3D8652" opacity=".7"/></symbol>
+</svg>
+
+  <div class="app-shell">
+   <div class="phone" id="phone">
+<section id="splash" class="screen full splash active"><img loading="lazy" src="https://images.pexels.com/photos/8357144/pexels-photo-8357144.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="">
+     <div class="splash-inner">
+      <div class="mark"><svg viewBox="0 0 120 120" role="img" aria-label="SETTAL PAY"><use href="#logo-settal"/></svg></div>
+      <div class="mt-auto">
+       <p data-i18n="splash-kicker" class="eyebrow" style="color: #F3B706;">GREEN TECH SÉNÉGALAISE</p>
+       <h1 class="brand text-6xl mt-3" style="color: rgb(255, 255, 255);">SETTAL PAY</h1>
+       <p class="splash-inner-slogan text-sm font-bold tracking-[.18em] mt-6" style="color: rgb(255, 255, 255);">SETTAL • JOT • JARIÑU</p>
+      </div><button data-i18n="splash-start" class="primary mt-12 bg-white text-[#296740]" type="button" onclick="go('on1')" style="background: rgb(255, 255, 255); color: #296740;">Commencer</button>
+     </div>
+    </section>
+    <section id="on1" class="screen">
+     <p data-i18n="on1-kicker" class="eyebrow" style="color: #296740;">01 — L'ENJEU</p><img class="onboard-img mt-4" loading="lazy" src="https://images.pexels.com/photos/10186806/pexels-photo-10186806.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+     <h1 data-i18n="on1-title" class="headline mt-7" style="color: #00290B;">Chaque bouteille abandonnée compte.</h1>
+     <p data-i18n="on1-copy" class="text-sm text-[#00290B9E] mt-3" style="color: #00290B9E;">À Dakar, le plastique peut devenir une ressource plutôt qu'un déchet.</p>
+     <div class="flex justify-between items-center mt-9">
+      <div class="dots">
+       <span class="on"></span><span></span><span></span><span></span>
+      </div><button data-i18n="skip" class="text-sm font-bold text-[#296740]" type="button" onclick="go('login')" style="color: #296740;">Passer</button>
+     </div><button data-i18n="next" class="primary w-full mt-5 bg-[#296740] text-white" type="button" onclick="go('on2')" style="background: #296740; color: rgb(255, 255, 255);">Suivant</button>
+    </section>
+    <section id="on2" class="screen">
+     <p data-i18n="on2-kicker" class="eyebrow" style="color: #296740;">02 — LA SOLUTION</p><img class="onboard-img mt-4" loading="lazy" src="https://images.pexels.com/photos/37125639/pexels-photo-37125639.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+     <h1 data-i18n="on2-title" class="headline mt-7" style="color: #00290B;">Déposez. La borne fait le reste.</h1>
+     <p data-i18n="on2-copy" class="text-sm text-[#00290B9E] mt-3" style="color: #00290B9E;">Nos bornes IoT détectent, pèsent et compactent vos bouteilles en quelques secondes.</p>
+     <div class="flex justify-between items-center mt-9">
+      <div class="dots">
+       <span></span><span class="on"></span><span></span><span></span>
+      </div><button data-i18n="skip" class="text-sm font-bold text-[#296740]" type="button" onclick="go('login')" style="color: #296740;">Passer</button>
+     </div><button data-i18n="next" class="primary w-full mt-5 bg-[#296740] text-white" type="button" onclick="go('on3')" style="background: #296740; color: rgb(255, 255, 255);">Suivant</button>
+    </section>
+    <section id="on3" class="screen">
+     <p data-i18n="on3-kicker" class="eyebrow" style="color: #296740;">03 — LA RÉCOMPENSE</p><img class="onboard-img mt-4" loading="lazy" src="https://images.pexels.com/photos/6969616/pexels-photo-6969616.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+     <h1 data-i18n="on3-title" class="headline mt-7" style="color: #00290B;">Votre geste se transforme en gain.</h1>
+     <p data-i18n="on3-copy" class="text-sm text-[#00290B9E] mt-3" style="color: #00290B9E;">Cumulez des points et recevez vos récompenses automatiquement via Mobile Money.</p>
+     <div class="flex justify-between items-center mt-9">
+      <div class="dots">
+       <span></span><span></span><span class="on"></span><span></span>
+      </div><button data-i18n="skip" class="text-sm font-bold text-[#296740]" type="button" onclick="go('login')" style="color: #296740;">Passer</button>
+     </div><button data-i18n="next" class="primary w-full mt-5 bg-[#296740] text-white" type="button" onclick="go('on4')" style="background: #296740; color: rgb(255, 255, 255);">Suivant</button>
+    </section>
+    <section id="on4" class="screen">
+     <p data-i18n="on4-kicker" class="eyebrow" style="color: #296740;">04 — ENSEMBLE</p><img class="onboard-img mt-4" loading="lazy" src="https://images.pexels.com/photos/9037221/pexels-photo-9037221.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+     <h1 data-i18n="on4-title" class="headline mt-7" style="color: #00290B;">Dakar avance, bouteille après bouteille.</h1>
+     <p data-i18n="on4-copy" class="text-sm text-[#00290B9E] mt-3" style="color: #00290B9E;">Relevez des défis, gagnez des badges Eco et rejoignez la communauté SETTAL.</p>
+     <div class="dots mt-9">
+      <span></span><span></span><span></span><span class="on"></span>
+     </div><button data-i18n="on4-start" class="primary w-full mt-5 bg-[#F3B706] text-[#00290B]" type="button" onclick="go('login')" style="background: #F3B706; color: #00290B;">Rejoindre SETTAL PAY</button>
+    </section>
+    <section id="login" class="screen"><button class="back" type="button" onclick="go('splash')" aria-label="Retour"><i data-lucide="arrow-left"></i></button>
+     <p data-i18n="login-kicker" class="eyebrow mt-6" style="color: #296740;">BON RETOUR</p>
+     <h1 data-i18n="login-title" class="headline mt-2" style="color: #00290B;">Votre impact vous attend.</h1>
+     <p data-i18n="login-copy" class="text-sm text-[#00290B9E] mt-3" style="color: #00290B9E;">Connectez-vous pour retrouver vos points, défis et récompenses.</p>
+     <form id="login-form" class="mt-5"><label data-i18n="name-label" class="input-label" for="login-name" style="color: #00290B;">Nom complet</label><input id="login-name" class="field" type="text" required> <label data-i18n="phone-label" class="input-label" for="login-phone" style="color: #00290B;">Numéro de téléphone</label>
+      <div class="flex gap-2">
+       <span class="field phone-prefix">🇸🇳 +221</span><input id="login-phone" class="field" style="flex:1" type="tel" placeholder="77 787 82 50" required>
+      </div>
+      <button data-i18n="login-button" class="primary w-full mt-6 bg-[#296740] text-white" type="submit" style="background: #296740; color: rgb(255, 255, 255);">Se connecter</button>
+     </form><button data-i18n="signup-link" class="w-full py-4 font-bold text-[#296740]" type="button" onclick="go('signup')" style="color: #296740;">Créer un compte</button>
+     <div class="flex gap-3 items-center text-xs text-[#00290B73]">
+      <span class="h-px flex-1 bg-[#29674026]"></span><span data-i18n="or" style="color: #00290B73;">ou</span><span class="h-px flex-1 bg-[#29674026]"></span>
+     </div><button data-i18n="google-button" class="primary glass w-full text-[#00290B] mt-4" type="button" onclick="go('home')" style="background: rgb(255, 255, 255); color: #00290B;">Continuer avec Google</button>
+    </section>
+    <section id="signup" class="screen"><button class="back" type="button" onclick="go('login')" aria-label="Retour"><i data-lucide="arrow-left"></i></button>
+     <p data-i18n="signup-kicker" class="eyebrow mt-6" style="color: #296740;">NOUVEAU MEMBRE</p>
+     <h1 data-i18n="signup-title" class="headline mt-2" style="color: #00290B;">Créez votre espace Eco.</h1>
+     <form id="signup-form"><label data-i18n="name-label" class="input-label" for="signup-name" style="color: #00290B;">Nom complet</label><input id="signup-name" class="field" type="text" required> <label data-i18n="phone-label" class="input-label" for="signup-phone" style="color: #00290B;">Numéro de téléphone</label>
+      <div class="flex gap-2">
+       <span class="field phone-prefix">🇸🇳 +221</span><input id="signup-phone" class="field" style="flex:1" type="tel" placeholder="77 787 82 50" required>
+      </div>
+      <label data-i18n="city-label" class="input-label" for="signup-city" style="color: #00290B;">Ville</label><select id="signup-city" class="field"><option>Dakar</option><option>Pikine</option><option>Guédiawaye</option></select> <label class="flex gap-2 text-xs text-[#00290BA8] mt-5"><input type="checkbox" required><span data-i18n="signup-cgu" style="color: #00290BA8;">J'accepte les conditions d'utilisation de SETTAL PAY.</span></label> <button data-i18n="signup-button" class="primary w-full mt-6 bg-[#296740] text-white" type="submit" style="background: #296740; color: rgb(255, 255, 255);">Créer mon compte</button>
+     </form>
+    </section>
+    <section id="home" class="screen">
+     <header class="flex items-center justify-between">
+      <div>
+       <div class="flex items-center gap-2"><svg class="home-logo" viewBox="0 0 120 120" role="img" aria-label="SETTAL PAY"><use href="#logo-settal"/></svg><p data-i18n="home-kicker" class="eyebrow" style="color: #296740;">MON ESPACE VERT</p></div>
+       <h1 class="headline mt-1" style="color: #00290B;"><span data-i18n="home-greeting">Bonjour</span> ANTA LAYE 👋</h1>
+      </div><img class="w-12 h-12 rounded-[18px] object-cover border-3 border-white shadow-lg" loading="lazy" src="Anta.png" alt="">
+     </header>
+     <article class="balance mt-6" style="background: linear-gradient(135deg,#00290B,#296740);">
+      <p data-i18n="points-label" class="text-white/70 text-sm" style="color: #FFFFFFBF;">Points disponibles</p>
+      <div class="flex justify-between items-end">
+       <strong id="points-display" class="text-3xl" style="color:#F3B706">1 250 pts</strong><span data-i18n="eco-level" class="px-3 py-1 rounded-full text-xs bg-white/15" style="background: rgba(255, 255, 255, 0.15); color: rgb(255, 255, 255);">Eco Bronze</span>
+      </div>
+      <div class="border-t border-white/15 mt-5 pt-4">
+       <p data-i18n="balance-label" class="text-white/70 text-xs" style="color: #FFFFFFBF;">Solde récompenses</p><strong id="balance-display" class="text-xl">6 500 FCFA</strong>
+      </div>
+     </article>
+     <div class="flex justify-between items-center mt-6">
+      <h2 data-i18n="quick-title" class="font-bold" style="color: #00290B;">Actions rapides</h2>
+     </div>
+     <div class="quick-grid mt-3">
+      <button data-i18n="quick-scan" class="quick bg-[#29674022] text-[#296740]" type="button" onclick="go('scanner')" style="background: #29674022; color: #296740;">Scanner QR Code</button><button data-i18n="quick-deposit" class="quick bg-[#F3B706] text-[#00290B]" type="button" onclick="go('scanner')" style="background: #F3B706; color: #00290B;">Déposer une bouteille</button><button data-i18n="quick-challenges" class="quick glass" type="button" onclick="go('challenges')" style="background: rgb(255, 255, 255); color: #00290B;">Défis de la semaine</button><button class="quick glass" type="button" onclick="go('impact')" style="background: rgb(255, 255, 255); color: #00290B;" data-i18n="x01">Mon impact & IA</button><button data-i18n="quick-shop" class="quick glass" type="button" onclick="go('shop')" style="background: rgb(255, 255, 255); color: #00290B;">Récompenses</button>
+     </div>
+     <article class="glass p-4 mt-5 flex gap-3 items-center" style="background: rgb(255, 255, 255);">
+      <div class="w-11 h-11 grid place-items-center rounded-2xl bg-[#F3B70626] text-[#00290B]">
+       <i data-lucide="leaf"></i>
+      </div>
+      <div>
+       <strong data-i18n="weekly-title" class="text-sm" style="color: #00290B;">Défi de la semaine</strong>
+       <p data-i18n="weekly-copy" class="text-xs text-[#00290B9E] mt-1" style="color: #00290B9E;">Encore 8 bouteilles pour gagner +100 pts.</p>
+      </div>
+     </article>
+    </section>
+    <section id="scanner" class="screen">
+     <p data-i18n="scanner-kicker" class="eyebrow" style="color: #296740;">BORNE INTELLIGENTE</p>
+     <h1 data-i18n="scanner-title" class="headline mt-2 mb-6" style="color: #00290B;">Scannez le QR Code</h1>
+     <div class="scan-view">
+      <div class="frame">
+       <span class="laser"></span>
+      </div>
+     </div>
+     <p data-i18n="scanner-copy" class="text-center text-sm text-[#00290B9E] mt-5" style="color: #00290B9E;">Placez le code de la borne dans le cadre.</p><button data-i18n="scanner-button" class="primary w-full bg-[#296740] text-white mt-5" type="button" onclick="go('terminal')" style="background: #296740; color: rgb(255, 255, 255);">Scanner maintenant</button>
+    </section>
+    <section id="terminal" class="screen">
+     <p data-i18n="terminal-kicker" class="eyebrow" style="color: #296740;">CONNEXION IOT</p>
+     <h1 data-i18n="terminal-title" class="headline mt-2" style="color: #00290B;">Borne détectée</h1>
+     <article class="glass terminal mt-7">
+      <!-- VISUEL KIOSQUE (placeholder) : remplacer le <svg> par <img src="assets/kiosque-settalpay.png" alt="Borne SETTAL PAY" class="kiosk-img"> -->
+      <div class="pulse kiosk-pulse"><svg class="kiosk-img" viewBox="0 0 160 200" role="img" aria-label="Borne SETTAL PAY"><use href="#kiosk-settal"/></svg></div><strong class="text-xl" style="color: #00290B;" data-i18n="x02">Borne N°025</strong>
+      <p data-i18n="terminal-location" class="text-sm text-[#00290B9E] mt-2" style="color: #00290B9E;">Place de l'Indépendance · Plateau</p>
+      <div class="grid grid-cols-2 gap-3 mt-6 text-left">
+       <div class="rounded-2xl bg-[#29674017] p-3">
+        <p data-i18n="terminal-status-label" class="text-xs text-[#00290B9E]" style="color: #00290B9E;">Statut</p><strong data-i18n="terminal-status" class="text-sm text-[#296740]" style="color: #296740;">● Disponible</strong>
+       </div>
+       <div class="rounded-2xl bg-[#F3B70626] p-3">
+        <p data-i18n="terminal-capacity-label" class="text-xs text-[#00290B9E]" style="color: #00290B9E;">Capacité</p><strong data-i18n="terminal-capacity" class="text-sm text-[#00290B]" style="color: #00290B;">42% remplie</strong>
+       </div>
+      </div>
+     </article><button data-i18n="continue" class="primary w-full bg-[#296740] text-white mt-6" type="button" onclick="startDeposit()" style="background: #296740; color: rgb(255, 255, 255);">Continuer</button>
+    </section>
+    <section id="deposit" class="screen">
+     <p data-i18n="deposit-kicker" class="eyebrow" style="color: #296740;">BORNE N°025</p>
+     <h1 data-i18n="deposit-title" class="headline mt-2" style="color: #00290B;">Votre dépôt est en cours</h1>
+     <article class="bottle-stage mt-6">
+      <div class="bottle"></div>
+      <p data-i18n="deposit-copy" class="text-sm text-[#00290B9E]" style="color: #00290B9E;">Placez vos bouteilles une à une dans la borne.</p><strong id="deposit-percent" class="block mt-3 text-[#296740]">0%</strong>
+     </article>
+     <div class="progress mt-6">
+      <b id="deposit-progress"></b>
+     </div>
+     <div class="glass px-4 mt-6">
+      <div id="step1" class="step">
+       <i data-lucide="circle"></i><span data-i18n="step1-text" style="color: #00290B;">Vérification IA</span>
+      </div>
+      <div id="step2" class="step">
+       <i data-lucide="circle"></i><span data-i18n="step2-text" style="color: #00290B;">Pesée intelligente</span>
+      </div>
+      <div id="step3" class="step">
+       <i data-lucide="circle"></i><span data-i18n="step3-text" style="color: #00290B;">Compactage</span>
+      </div>
+      <div id="step4" class="step">
+       <i data-lucide="circle"></i><span data-i18n="step4-text" style="color: #00290B;">Validation du dépôt</span>
+      </div>
+     </div>
+    </section>
+    <section id="ai" class="screen">
+     <p data-i18n="ai-kicker" class="eyebrow" style="color: #296740;">INTELLIGENCE ARTIFICIELLE</p>
+     <h1 data-i18n="ai-title" class="headline mt-2" style="color: #00290B;">Analyse du plastique</h1>
+     <div class="ai-orb mt-7">
+      <i data-lucide="brain-circuit"></i>
+     </div>
+     <article class="glass p-5 mt-6">
+      <div class="flex justify-between">
+       <span data-i18n="ai-type-label" class="text-sm text-[#00290B9E]" style="color: #00290B9E;">Type détecté</span><strong class="text-[#296740]" style="color: #296740;" data-i18n="x03">PET recyclable</strong>
+      </div>
+      <div class="progress mt-4">
+       <b style="width:96%"></b>
+      </div>
+      <div class="flex justify-between mt-2 text-xs">
+       <span data-i18n="ai-confidence-label" class="text-[#00290B9E]" style="color: #00290B9E;">Confiance IA</span><strong class="text-[#296740]" style="color: #296740;">96%</strong>
+      </div>
+     </article><button data-i18n="ai-button" class="primary w-full mt-6 bg-[#296740] text-white" type="button" onclick="go('validation')" style="background: #296740; color: rgb(255, 255, 255);">Valider l'analyse</button>
+    </section>
+    <section id="validation" class="screen">
+     <div class="validate mt-12">
+      <div class="check">
+       <i data-lucide="check"></i>
+      </div>
+      <p data-i18n="validation-kicker" class="eyebrow mt-7" style="color: #296740;">DÉPÔT VALIDÉ</p>
+      <h1 data-i18n="validation-title" class="headline mt-2" style="color: #00290B;">Excellent geste !</h1>
+      <p data-i18n="validation-copy" class="text-sm text-[#00290B9E] mt-3" style="color: #00290B9E;">Votre contribution a bien été enregistrée.</p>
+     </div>
+     <article class="glass p-5 mt-3 grid grid-cols-3 text-center">
+      <div>
+       <strong class="block" style="color: #00290B;">12</strong><span data-i18n="bottles-label" class="text-[11px] text-[#00290B9E]" style="color: #00290B9E;">bouteilles</span>
+      </div>
+      <div>
+       <strong class="block" style="color: #00290B;">0,42 kg</strong><span data-i18n="weight-label" class="text-[11px] text-[#00290B9E]" style="color: #00290B9E;">poids</span>
+      </div>
+      <div>
+       <strong class="block text-[#3D8652]" style="color: #3D8652;">+250</strong><span data-i18n="points-word" class="text-[11px] text-[#00290B9E]" style="color: #00290B9E;">points</span>
+      </div>
+     </article><button data-i18n="see-reward" class="primary w-full mt-6 bg-[#296740] text-white" type="button" onclick="go('reward')" style="background: #296740; color: rgb(255, 255, 255);">Voir ma récompense</button>
+    </section>
+    <section id="reward" class="screen">
+     <article class="reward">
+      <span class="coin" style="top:20%;left:12%"></span><span class="coin" style="top:15%;right:14%;animation-delay:.8s"></span><span class="coin" style="bottom:12%;right:29%;animation-delay:1.2s"></span><span class="confetti" style="left:22%;background:#fff;animation-delay:.5s"></span><span class="confetti" style="right:23%;background:#F3B706;animation-delay:1s"></span>
+      <div class="text-6xl">🎉</div>
+      <h1 data-i18n="reward-title" class="brand text-4xl mt-3" style="color: rgb(255, 255, 255);">Félicitations !</h1>
+      <p data-i18n="reward-copy" class="text-white/75 mt-2" style="color: #FFFFFFBF;">Votre impact prend de la valeur.</p><strong data-i18n="reward-points" class="block text-5xl mt-7" style="color: #F3B706;">+250 points</strong>
+      <p data-i18n="reward-equivalent" class="text-white font-bold mt-2" style="color: #fff;">Équivalent : 250 FCFA</p>
+     </article>
+     <p data-i18n="reward-payment-title" class="font-bold mt-7 mb-3" style="color: #00290B;">Comment recevoir votre gain ?</p><button data-i18n="wave-button" class="primary w-full bg-[#0ab8e7] text-white" type="button" onclick="claimReward('Wave')" style="background: rgb(10, 184, 231); color: rgb(255, 255, 255);">Recevoir via Wave</button><button data-i18n="orange-button" class="primary w-full bg-[#f58220] text-white mt-3" type="button" onclick="claimReward('Orange Money')" style="background: rgb(245, 130, 32); color: rgb(255, 255, 255);">Recevoir via Orange Money</button>
+    </section>
+    <section id="history" class="screen">
+     <p data-i18n="history-kicker" class="eyebrow" style="color: #296740;">VOS ACTIONS</p>
+     <h1 data-i18n="history-title" class="headline mt-2" style="color: #00290B;">Historique</h1>
+     <div class="flex gap-2 mt-5">
+      <button data-i18n="filter-all" class="px-3 py-2 rounded-xl text-xs bg-[#29674022] text-[#296740]" type="button" onclick="toast('Tous les dépôts affichés')" style="background: #29674022; color: #296740;">Tous</button><button data-i18n="filter-month" class="px-3 py-2 rounded-xl text-xs glass" type="button" onclick="toast('Filtre mensuel appliqué')" style="background: rgb(255, 255, 255); color: #00290B;">Ce mois</button>
+     </div>
+     <article class="glass px-5 mt-5">
+      <div class="row">
+       <div>
+        <strong style="color: #00290B;" data-i18n="x04">15 juillet</strong>
+        <p class="text-xs text-[#00290B9E] mt-1" style="color: #00290B9E;" data-i18n="x05">12 bouteilles · Borne N°025</p>
+       </div><strong class="text-[#3D8652]" style="color: #3D8652;">+240 pts</strong>
+      </div>
+      <div class="row">
+       <div>
+        <strong style="color: #00290B;" data-i18n="x06">12 juillet</strong>
+        <p class="text-xs text-[#00290B9E] mt-1" style="color: #00290B9E;" data-i18n="x07">5 bouteilles · Borne N°041</p>
+       </div><strong class="text-[#3D8652]" style="color: #3D8652;">+100 pts</strong>
+      </div>
+      <div class="row">
+       <div>
+        <strong style="color: #00290B;" data-i18n="x08">07 juillet</strong>
+        <p class="text-xs text-[#00290B9E] mt-1" style="color: #00290B9E;" data-i18n="x09">8 bouteilles · Borne N°018</p>
+       </div><strong class="text-[#3D8652]" style="color: #3D8652;">+160 pts</strong>
+      </div>
+     </article>
+    </section>
+    <section id="map" class="screen">
+     <p data-i18n="map-kicker" class="eyebrow" style="color: #296740;">DAKAR</p>
+     <h1 data-i18n="map-title" class="headline mt-2 mb-5" style="color: #00290B;">Bornes proches</h1>
+     <div class="mapbox">
+      <img loading="lazy" src="https://images.pexels.com/photos/18189724/pexels-photo-18189724.jpeg?auto=compress&cs=tinysrgb&w=1280" alt=""><button class="pin bg-[#3D8652]" style="top:29%;left:34%" type="button" onclick="toast('Borne N°025 · Disponible')"><svg class="pin-logo" viewBox="0 0 120 120" aria-hidden="true"><use href="#logo-settal-mono"/></svg></button><button class="pin bg-[#F3B706]" style="top:55%;left:63%;color:#00290B" type="button" onclick="toast('Borne N°041 · Presque pleine')"><svg class="pin-logo" viewBox="0 0 120 120" aria-hidden="true"><use href="#logo-settal-mono"/></svg></button><button class="pin bg-[#9aa39d]" style="top:20%;right:19%" type="button" onclick="toast('Borne N°018 · Hors service')"><i data-lucide="x"></i></button>
+     </div>
+     <article class="glass p-4 mt-5 flex justify-between" style="background: rgb(255, 255, 255);">
+      <div>
+       <strong style="color: #00290B;" data-i18n="x10">Borne N°025 · Disponible</strong>
+       <p data-i18n="map-address" class="text-xs text-[#00290B9E] mt-1" style="color: #00290B9E;">Place de l'Indépendance · à 250 m</p>
+      </div><button data-i18n="route" class="rounded-xl bg-[#29674022] px-3 text-xs text-[#296740]" type="button" onclick="toast('Itinéraire prêt dans votre application de cartes')" style="background: #29674022; color: #296740;">Itinéraire</button>
+     </article>
+    </section>
+    <section id="ranking" class="screen">
+     <p data-i18n="ranking-kicker" class="eyebrow" style="color: #296740;">COMMUNAUTÉ SETTAL</p>
+     <h1 data-i18n="ranking-title" class="headline mt-2" style="color: #00290B;">Les meilleurs recycleurs</h1>
+     <article class="glass mt-6">
+      <div class="rank">
+       <div class="rank-person">
+        <img class="rank-avatar" loading="lazy" src="https://images.pexels.com/photos/7257963/pexels-photo-7257963.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+        <p class="text-xs font-bold mt-2" style="color: #00290B;">Cheikh</p>
+        <div class="podium mt-2 h-12">2</div>
+       </div>
+       <div class="rank-person rank-first">
+        <div class="text-[#F3B706]">
+         <i data-lucide="crown"></i>
+        </div><img class="rank-avatar" loading="lazy" src="https://images.pexels.com/photos/38223523/pexels-photo-38223523.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+        <p class="text-xs font-bold mt-2" style="color: #00290B;">Awa</p>
+        <div class="podium mt-2">1</div>
+       </div>
+       <div class="rank-person">
+        <img class="rank-avatar" loading="lazy" src="https://images.pexels.com/photos/8617732/pexels-photo-8617732.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+        <p class="text-xs font-bold mt-2" style="color: #00290B;">Fatou</p>
+        <div class="podium mt-2 h-8">3</div>
+       </div>
+      </div>
+     </article>
+     <article class="glass px-4 mt-5">
+      <div class="rank-row">
+       <strong>04</strong>
+       <div class="flex-1">
+        <strong class="text-sm" style="color: #00290B;">Khadim Ndiaye</strong>
+        <p class="text-xs text-[#00290B9E]" style="color: #00290B9E;">Médina</p>
+       </div><strong class="text-[#3D8652] text-sm" style="color: #3D8652;">2 460 pts</strong>
+      </div>
+      <div class="rank-row bg-[#29674017] -mx-4 px-4 rounded-xl">
+       <strong>12</strong>
+       <div class="flex-1">
+        <strong class="text-sm" style="color: #00290B;">Anta LAYE · Vous</strong>
+        <p class="text-xs text-[#00290B9E]" style="color: #00290B9E;">Plateau</p>
+       </div><strong class="text-[#3D8652] text-sm" style="color: #3D8652;">1 250 pts</strong>
+      </div>
+     </article>
+    </section>
+    <section id="challenges" class="screen">
+     <p data-i18n="challenges-kicker" class="eyebrow" style="color: #296740;">MOTIVATION</p>
+     <h1 data-i18n="challenges-title" class="headline mt-2" style="color: #00290B;">Défis hebdomadaires</h1>
+     <article class="challenge mt-6 bg-[#296740] text-white" style="background: #296740;">
+      <div class="flex justify-between">
+       <span data-i18n="in-progress" class="text-xs bg-white/15 px-3 py-1 rounded-full" style="background: rgba(255, 255, 255, 0.15); color: rgb(255, 255, 255);">EN COURS</span><i data-lucide="trophy" class="text-[#F3B706]"></i>
+      </div>
+      <h2 data-i18n="challenge-name" class="font-bold text-xl mt-5" style="color: rgb(255, 255, 255);">20 bouteilles cette semaine</h2>
+      <p data-i18n="challenge-copy" class="text-sm text-white/75 mt-2" style="color: #FFFFFFBF;">Débloquez 100 points bonus.</p>
+      <div class="progress mt-5 bg-white/20">
+       <b style="width:60%"></b>
+      </div>
+      <div class="flex justify-between mt-2 text-xs">
+       <span data-i18n="challenge-progress" style="color: rgb(255, 255, 255);">12 / 20 bouteilles</span><span data-i18n="challenge-time" style="color: rgb(255, 255, 255);">2 j 14 h restantes</span>
+      </div>
+     </article>
+     <article class="glass challenge mt-4">
+      <div class="flex justify-between">
+       <div>
+        <strong data-i18n="challenge-two-title" style="color: #00290B;">Explorateur de Dakar</strong>
+        <p data-i18n="challenge-two-copy" class="text-xs text-[#00290B9E] mt-1" style="color: #00290B9E;">Recyclez auprès de 3 bornes différentes.</p>
+       </div><i data-lucide="sparkles" class="text-[#F3B706]"></i>
+      </div><button data-i18n="participate" class="rounded-xl mt-4 px-4 py-3 text-sm bg-[#29674022] text-[#296740]" type="button" onclick="toast('Défi ajouté à vos objectifs')" style="background: #29674022; color: #296740;">Participer</button>
+     </article>
+    </section>
+    <section id="shop" class="screen">
+     <p data-i18n="shop-kicker" class="eyebrow" style="color: #296740;">VOS AVANTAGES</p>
+     <h1 data-i18n="shop-title" class="headline mt-2" style="color: #00290B;">Boutique de récompenses</h1>
+     <p data-i18n="shop-points" class="text-sm text-[#00290B9E] mt-2" style="color: #00290B9E;">Vous avez 1 250 points à utiliser.</p>
+     <div class="shop-grid mt-5">
+      <article class="glass shop-card">
+       <img loading="lazy" src="https://images.pexels.com/photos/19863392/pexels-photo-19863392.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+       <div class="shop-body">
+        <strong class="text-sm" style="color: #00290B;" data-i18n="x11">500 Mo Internet</strong>
+        <p class="inline-block text-xs font-bold px-2 py-0.5 rounded-full bg-[#F3B706] text-[#00290B] mt-1" style="color:#00290B">700 pts</p><button data-i18n="exchange" class="rounded-xl px-3 py-2 text-xs bg-[#29674022] text-[#296740] mt-3" type="button" onclick="toast('Forfait sélectionné')" style="background: #29674022; color: #296740;">Échanger</button>
+       </div>
+      </article>
+      <article class="glass shop-card">
+       <img loading="lazy" src="https://images.pexels.com/photos/5926431/pexels-photo-5926431.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+       <div class="shop-body">
+        <strong class="text-sm" style="color: #00290B;" data-i18n="x12">Bon d'achat</strong>
+        <p class="inline-block text-xs font-bold px-2 py-0.5 rounded-full bg-[#F3B706] text-[#00290B] mt-1" style="color:#00290B">1 000 pts</p><button data-i18n="exchange" class="rounded-xl px-3 py-2 text-xs bg-[#29674022] text-[#296740] mt-3" type="button" onclick="toast('Bon d’achat sélectionné')" style="background: #29674022; color: #296740;">Échanger</button>
+       </div>
+      </article>
+      <article class="glass shop-card col-span-2">
+       <div class="flex">
+        <img class="w-28 object-cover" loading="lazy" src="https://images.pexels.com/photos/7475178/pexels-photo-7475178.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+        <div class="shop-body">
+         <strong class="text-sm" style="color: #00290B;" data-i18n="x13">Don écologique</strong>
+         <p class="text-xs text-[#00290B9E] mt-1" style="color: #00290B9E;" data-i18n="x14">Financez la plantation d'un arbre.</p><button class="rounded-xl px-3 py-2 text-xs bg-[#F3B706] text-[#00290B] font-bold mt-3" type="button" onclick="toast('Don écologique sélectionné')" style="background: #F3B706; color: #00290B;">500 pts</button>
+        </div>
+       </div>
+      </article>
+     </div>
+    </section>
+
+<section id="impact" class="screen">
+  <div class="flex items-center justify-between">
+    <div>
+      <p class="eyebrow" data-i18n="x15">DATA · IA · IMPACT</p>
+      <h1 class="headline mt-2" data-i18n="x16">Mon impact, en données.</h1>
+    </div>
+    <span class="offline-pill"><span class="status-dot"></span><span data-i18n="sync-pill">Données synchronisées</span></span>
+  </div>
+
+  <article class="impact-hero mt-5">
+    <p class="text-xs text-white/70" data-i18n="x17">Impact personnel cumulé</p>
+    <div class="impact-number mt-1">18,6 kg</div>
+    <p class="text-sm text-white/80" data-i18n="x18">de plastique valorisé · 83 dépôts</p>
+    <div class="flex justify-between text-xs mt-5">
+      <span data-i18n="x19">CO₂ estimé évité</span><strong>12,4 kg</strong>
+    </div>
+  </article>
+
+  <div class="intel-grid mt-4">
+    <article class="metric-card">
+      <div class="metric">+18%</div>
+      <small data-i18n="x20">Progression mensuelle</small>
+      <span class="trend-up" data-i18n="x21">↗ vs mois précédent</span>
+    </article>
+    <article class="metric-card">
+      <div class="metric">4,2 kg</div>
+      <small data-i18n="x22">Cette semaine</small>
+      <span class="trend-up" data-i18n="x23">Objectif 5 kg</span>
+    </article>
+  </div>
+
+  <article class="ai-panel mt-4">
+    <p class="eyebrow" style="color:#F3B706" data-i18n="x24">PRÉVISION IA</p>
+    <h2 class="font-bold text-lg mt-2" data-i18n="x25">La borne N°025 devrait atteindre 80 % demain.</h2>
+    <p class="text-xs text-white/75 mt-2" data-i18n="x26">Estimation basée sur les historiques de dépôts, les horaires d'affluence et le niveau de remplissage.</p>
+    <div class="prediction mt-5">
+      <div>
+        <div class="prediction-bar"><b></b></div>
+        <p class="text-[10px] text-white/65 mt-2" data-i18n="x27">Confiance du modèle : 78 %</p>
+      </div>
+      <strong class="text-xl" style="color:#F3B706">80%</strong>
+    </div>
+  </article>
+
+  <article class="glass p-4 mt-4">
+    <div class="flex justify-between items-center">
+      <div>
+        <p class="eyebrow" data-i18n="x28">ACTIVITÉ DES DÉPÔTS</p>
+        <strong class="text-sm" data-i18n="x29">7 derniers jours</strong>
+      </div>
+      <span class="chip" data-i18n="x30">+14% volume</span>
+    </div>
+    <canvas id="impactChart" class="mini-chart mt-3" height="125"></canvas>
+  </article>
+
+  <article class="glass p-4 mt-4">
+    <div class="flex justify-between items-center">
+      <div>
+        <p class="eyebrow" data-i18n="x31">QUALITÉ DES DONNÉES</p>
+        <strong class="text-sm" data-i18n="x32">Traçabilité du dépôt</strong>
+      </div>
+      <span class="chip chip-gold" data-i18n="x33">97% fiable</span>
+    </div>
+    <table class="data-table mt-3">
+      <thead><tr><th data-i18n="x34">Indicateur</th><th data-i18n="x35">Valeur</th><th data-i18n="x36">État</th></tr></thead>
+      <tbody>
+        <tr><td data-i18n="x37">Poids mesuré</td><td>0,42 kg</td><td data-i18n="x38">✓ Validé</td></tr>
+        <tr><td data-i18n="x39">Type matière</td><td>PET</td><td data-i18n="ok-ai">✓ IA</td></tr>
+        <tr><td data-i18n="x40">Horodatage</td><td>14:32</td><td data-i18n="x41">✓ Traçable</td></tr>
+      </tbody>
+    </table>
+  </article>
+
+  <div class="privacy-note mt-4">
+    <strong data-i18n="priv-a">Confidentialité :</strong> <span data-i18n="priv-b">les données personnelles sont séparées des données d'impact. Le prototype prévoit une gestion des accès par rôle et la traçabilité des opérations sensibles.</span>
+  </div>
+</section>
+
+    <section id="profile" class="screen">
+     <p data-i18n="profile-kicker" class="eyebrow" style="color: #296740;">MON COMPTE</p>
+     <h1 data-i18n="profile-title" class="headline mt-2" style="color: #00290B;">Profil</h1>
+     <div class="text-center mt-5">
+      <img class="profile-img mx-auto" loading="lazy" src="image-removebg-preview (82) (1).png" alt="">
+      <h2 class="font-bold text-xl mt-3" style="color: #00290B;">Anta LAYE</h2>
+      <p class="text-sm text-[#00290B9E] mt-1" style="color: #00290B9E;">🇸🇳 +221 77 787 82 50</p>
+     </div>
+     <article class="glass p-5 mt-5">
+      <div class="flex justify-between">
+       <div>
+        <p data-i18n="your-level" class="eyebrow" style="color: #296740;">VOTRE NIVEAU</p><strong class="text-lg" style="color: #00290B;">Eco Bronze</strong>
+       </div><span class="bg-[#F3B706] text-[#00290B] font-bold rounded-full px-3 py-1 text-xs h-fit" style="background: #F3B706; color: #00290B;">620 / 1 000 pts</span>
+      </div>
+      <div class="progress mt-4">
+       <b style="width:62%"></b>
+      </div>
+     </article>
+     <div class="grid grid-cols-3 gap-3 mt-4">
+      <article class="glass p-3">
+       <strong class="block" style="color: #00290B;">83</strong><span data-i18n="bottles-label" class="text-[10px] text-[#00290B9E]" style="color: #00290B9E;">bouteilles</span>
+      </article>
+      <article class="glass p-3">
+       <strong class="block" style="color: #00290B;">4,2 kg</strong><span data-i18n="co2-label" class="text-[10px] text-[#00290B9E]" style="color: #00290B9E;">CO₂ évité</span>
+      </article>
+      <article class="glass p-3">
+       <strong class="block" style="color: #00290B;">6 500</strong><span data-i18n="fcfa-label" class="text-[10px] text-[#00290B9E]" style="color: #00290B9E;">FCFA gagnés</span>
+      </article>
+     </div>
+     <article class="glass px-5 mt-5">
+      <button data-i18n="settings" class="row w-full text-left font-bold" type="button" onclick="openProfile('settings')" style="color: #00290B;">Paramètres</button><button data-i18n="notifications" class="row w-full text-left font-bold" type="button" onclick="openProfile('notifications')" style="color: #00290B;">Notifications</button><button data-i18n="support" class="row w-full text-left font-bold" type="button" onclick="openProfile('support')" style="color: #00290B;">Assistance & FAQ</button><button data-i18n="admin" class="row w-full text-left font-bold" type="button" onclick="openProfile('admin')" style="color: #00290B;">Aperçu administrateur</button>
+     </article>
+     <div id="settings-panel" class="mini-panel glass p-5 mt-5">
+      <h2 data-i18n="settings" class="font-bold" style="color: #00290B;">Paramètres</h2>
+      <div class="row">
+       <span data-i18n="notifications" style="color: #00290B;">Notifications</span><button class="toggle on" type="button" onclick="this.classList.toggle('on')"><span></span></button>
+      </div>
+      <div class="row">
+       <span data-i18n="dark-mode" style="color: #00290B;">Mode sombre</span><button class="toggle" type="button" onclick="toggleTheme(this)"><span></span></button>
+      </div>
+      <div class="row block">
+       <p data-i18n="language" style="color: #00290B;">Langue</p>
+       <div class="flex gap-2 mt-3">
+        <button data-lang="fr" class="lang-btn active rounded-xl px-3 py-2 text-xs bg-[#296740] text-white" type="button" onclick="setLanguage('fr',this)">🇫🇷 Français</button><button data-lang="wo" class="lang-btn rounded-xl px-3 py-2 text-xs glass" type="button" onclick="setLanguage('wo',this)">🇸🇳 Wolof</button><button data-lang="en" class="lang-btn rounded-xl px-3 py-2 text-xs glass" type="button" onclick="setLanguage('en',this)">🇬🇧 English</button>
+       </div>
+      </div>
+     </div>
+     <div id="notifications-panel" class="mini-panel glass p-5 mt-5">
+      <h2 data-i18n="recent-notifications" class="font-bold" style="color: #00290B;">Notifications récentes</h2>
+      <div class="row">
+       <i data-lucide="circle-check-big" class="text-[#3D8652]"></i><span data-i18n="notice1" class="text-sm flex-1 ml-2" style="color: #00290B;">250 FCFA reçus via Wave aujourd'hui.</span>
+      </div>
+      <div class="row">
+       <i data-lucide="trophy" class="text-[#F3B706]"></i><span data-i18n="notice2" class="text-sm flex-1 ml-2" style="color: #00290B;">Nouveau défi : 20 bouteilles cette semaine.</span>
+      </div>
+     </div>
+     <div id="support-panel" class="mini-panel glass p-5 mt-5">
+      <h2 data-i18n="support-heading" class="font-bold" style="color: #00290B;">Comment pouvons-nous aider ?</h2><input data-i18n-placeholder="faq-search" id="faq-search" class="field mt-4" type="search" placeholder="Rechercher une question"><button data-i18n="faq-q1" class="row w-full text-left font-bold" type="button" onclick="faq(this)" style="color: #00290B;">Quand mes points apparaissent-ils ?</button>
+      <p class="faq-answer" data-i18n="faq-a1">Les points apparaissent automatiquement après validation du dépôt.</p><button data-i18n="faq-q2" class="row w-full text-left font-bold" type="button" onclick="faq(this)" style="color: #00290B;">Comment recevoir mon argent ?</button>
+      <p class="faq-answer" data-i18n="faq-a2">Choisissez Wave ou Orange Money sur l'écran de récompense.</p><button data-i18n="contact-support" class="primary w-full bg-[#296740] text-white mt-3" type="button" onclick="toast('Un conseiller SETTAL PAY vous répondra bientôt')" style="background: #296740; color: rgb(255, 255, 255);">Contacter le support</button>
+     </div>
+     <div id="admin-panel" class="mini-panel glass p-5 mt-5">
+      <article class="pilot-card">
+       <div class="flex justify-between items-start">
+        <div><p class="eyebrow" data-i18n="x42">CENTRE D'INTELLIGENCE</p><h2 class="font-bold text-lg mt-1" style="color:#00290B" data-i18n="x43">Pilotage prédictif</h2></div>
+        <span class="live-badge">LIVE DEMO</span>
+       </div>
+       <div class="pilot-grid">
+        <div><span data-i18n="x44">Remplissage prévu</span><strong>80%</strong></div>
+        <div><span data-i18n="x45">Collecte prioritaire</span><strong>N°041</strong></div>
+        <div><span data-i18n="x46">Anomalies détectées</span><strong>3</strong></div>
+        <div><span data-i18n="x47">Validation</span><strong>97,8%</strong></div>
+       </div>
+       <div class="reco-box">
+        <small data-i18n="x48">Recommandation IA</small>
+        <strong data-i18n="x49">Planifier une tournée N°041 → N°025 avant 18h pour réduire le risque de saturation.</strong>
+       </div>
+      </article>
+      <div class="ai-panel mt-4">
+       <p class="eyebrow" style="color:#F3B706" data-i18n="x50">CENTRE D'INTELLIGENCE</p>
+       <div class="flex justify-between items-center mt-2">
+        <div><strong class="text-lg" data-i18n="x51">Prévision collecte</strong><p class="text-xs text-white/70 mt-1" data-i18n="x52">Prochaine tournée recommandée</p></div>
+        <strong class="text-2xl">18:30</strong>
+       </div>
+       <div class="prediction-bar mt-4"><b style="width:86%"></b></div>
+       <p class="text-[10px] text-white/65 mt-2" data-i18n="x53">Borne N°041 · risque de saturation élevé · priorité logistique</p>
+      </div>
+      <article class="rse-card">
+       <p class="eyebrow" data-i18n="x54">RAPPORT RSE</p>
+       <div class="rse-row"><span data-i18n="x55">Matière collectée</span><strong>1,2 t</strong></div>
+       <div class="rse-row"><span data-i18n="x56">Citoyens mobilisés</span><strong>4 860</strong></div>
+       <div class="rse-row"><span data-i18n="x57">CO₂ estimé</span><strong>1,2 t</strong></div>
+       <button type="button" class="rse-btn" onclick="toast('Rapport RSE généré (simulation) ✓')" data-i18n="x58">Générer un rapport</button>
+      </article>
+      <h2 data-i18n="admin-heading" class="font-bold mt-6" style="color: #00290B;">Supervision des bornes</h2>
+      <div class="grid grid-cols-3 gap-2 mt-4">
+       <div class="rounded-xl bg-[#29674017] p-2">
+        <strong class="block text-sm" style="color: #296740;">18 420</strong><span data-i18n="bottles-label" class="text-[10px]" style="color: #00290B;">bouteilles</span>
+       </div>
+       <div class="rounded-xl bg-[#F3B70626] p-2">
+        <strong class="block text-sm" style="color: #00290B;">1,2 t</strong><span data-i18n="co2-label" class="text-[10px]" style="color: #00290B;">CO₂ évité</span>
+       </div>
+       <div class="rounded-xl bg-[#29674017] p-2">
+        <strong class="block text-sm" style="color: #00290B;">4 860</strong><span data-i18n="users-label" class="text-[10px]" style="color: #00290B;">utilisateurs</span>
+       </div>
+      </div>
+      <div class="row mt-3">
+       <span class="text-sm" style="color: #00290B;" data-i18n="x59">Borne N°025 · Plateau</span><span class="text-xs text-[#3D8652]" style="color: #3D8652;" data-i18n="x60">Disponible · 42%</span>
+      </div>
+      <div class="row">
+       <span class="text-sm" style="color: #00290B;" data-i18n="x61">Borne N°041 · Médina</span><span class="text-xs font-bold px-2 py-0.5 rounded-full bg-[#F3B706] text-[#00290B]" style="color:#00290B" data-i18n="x62">À vider · 89%</span>
+      </div>
+
+      <div class="privacy-note mt-4">
+       <strong data-i18n="fraud-a">Anti-fraude :</strong> <span data-i18n="fraud-b">chaque dépôt peut être rapproché de la borne, de l'heure, du poids et de l'identifiant de transaction afin de détecter les doublons ou comportements anormaux.</span>
+      </div>
+      <p class="demo-note" data-i18n="demo-note">Environnement de démonstration : chiffres, cartes et prédictions simulés. Wave / Orange Money, IoT et IA réels relèvent de la phase de déploiement décrite dans le mémoire.</p>
+     </div>
+    </section>
+    
+    <button type="button" onclick="go('impact')" aria-label="Mon impact"
+      style="position:absolute;right:18px;bottom:86px;z-index:25;border:0;border-radius:999px;background:#296740;color:#fff;padding:11px 14px;font-size:10px;font-weight:800;box-shadow:0 10px 25px #29674045;">
+      <span style="color:#F3B706">✦</span> <span data-i18n="fab-impact">Impact & IA</span>
+    </button>
+
+    <nav class="nav" aria-label="Navigation principale"><button data-nav="home" class="current" type="button" onclick="go('home')"><i data-lucide="house"></i><span data-i18n="nav-home" style="color: #296740;">Accueil</span></button> <button data-nav="scanner" class="scan-nav" type="button" onclick="go('scanner')"><i data-lucide="scan-line"></i><span data-i18n="nav-scanner" style="color: #296740;">Scanner</span></button> <button data-nav="map" type="button" onclick="go('map')"><i data-lucide="map"></i><span data-i18n="nav-map" style="color: #00290B8F;">Carte</span></button> <button data-nav="history" type="button" onclick="go('history')"><i data-lucide="clock-3"></i><span data-i18n="nav-history" style="color: #00290B8F;">Historique</span></button> <button data-nav="profile" type="button" onclick="go('profile')"><i data-lucide="user-round"></i><span data-i18n="nav-profile" style="color: #00290B8F;">Profil</span></button>
+    </nav>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+   </div>
+  </div>
+  <script>
+    /* ===================== NAVIGATION ===================== */
+    const navScreens=["home","scanner","map","history","profile"];
+    function go(id){
+      document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("current",b.dataset.nav===id && navScreens.includes(id)));
+      if(!navScreens.includes(id)) document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("current"));
+      if(id==="profile") document.querySelectorAll(".mini-panel").forEach(p=>p.classList.remove("show"));
+    }
+    function startDeposit(){
+      go("deposit");
+      const fill=document.getElementById("deposit-progress"),pct=document.getElementById("deposit-percent");
+      const steps=[document.getElementById("step1"),document.getElementById("step2"),document.getElementById("step3"),document.getElementById("step4")];
+      fill.style.width="0%";pct.textContent="0%";
+      steps.forEach(step=>{step.classList.remove("done");step.querySelector("svg")?.replaceWith(icon("circle"));});
+      lucide.createIcons();
+      [25,50,75,100].forEach((value,index)=>setTimeout(()=>{
+        fill.style.width=value+"%";pct.textContent=value+"%";steps[index].classList.add("done");
+        steps[index].querySelector("svg")?.replaceWith(icon("check-circle-2"));lucide.createIcons();
+        if(value===100)setTimeout(()=>go("ai"),650);
+      },(index+1)*760));
+    }
+    function icon(name){const el=document.createElement("i");el.dataset.lucide=name;return el}
+    function claimReward(method){
+      document.getElementById("points-display").textContent="1 500 pts";
+      document.getElementById("balance-display").textContent="6 750 FCFA";
+      persistDemo();
+      toast(({fr:"250 FCFA envoyés via ",wo:"250 FCFA yónnee nañu ci ",en:"250 FCFA sent via "})[currentLang]+method+" ✓");
+      setTimeout(()=>go("home"),1000);
+    }
+    const TOAST_I18N={"Compte créé avec succès ✓": {"wo": "Kont bi sosu na ✓", "en": "Account created successfully ✓"}, "Un conseiller SETTAL PAY vous répondra bientôt": {"wo": "Benn conseiller SETTAL PAY dina la tontu ci gaaw", "en": "A SETTAL PAY advisor will reply shortly"}, "Rapport RSE généré (simulation) ✓": {"wo": "Rapport RSE sosu na (simulation) ✓", "en": "CSR report generated (simulation) ✓"}, "Itinéraire prêt dans votre application de cartes": {"wo": "Yoon wi waaj na ci sa app kart", "en": "Directions ready in your maps app"}, "Tous les dépôts affichés": {"wo": "Dépôt yépp feeñ nañu", "en": "All deposits shown"}, "Filtre mensuel appliqué": {"wo": "Filtar weer wi def nañu ko", "en": "Monthly filter applied"}, "Défi ajouté à vos objectifs": {"wo": "Coup bi dugg na ci say bëgg-bëgg", "en": "Challenge added to your goals"}, "Forfait sélectionné": {"wo": "Forfait bi tànn nañu ko", "en": "Plan selected"}, "Bon d'achat sélectionné": {"wo": "Bon bi tànn nañu ko", "en": "Voucher selected"}, "Borne N°025 · Disponible": {"wo": "Borne N°025 · Am na", "en": "Terminal N°025 · Available"}, "Borne N°041 · Presque pleine": {"wo": "Borne N°041 · Dafa jege fees", "en": "Terminal N°041 · Almost full"}, "Borne N°018 · Hors service": {"wo": "Borne N°018 · Dafa yàqu", "en": "Terminal N°018 · Out of service"}, "Don écologique sélectionné": {"wo": "Jëw ekoloji tànn nañu ko", "en": "Eco donation selected"}};
+    function toast(message){const key=String(message).replace(/’/g,"'");const tl=TOAST_I18N[key];if(tl&&typeof currentLang!=="undefined"&&tl[currentLang])message=tl[currentLang];const el=document.getElementById("toast");el.textContent=message;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2600)}
+    function openProfile(panel){go("profile");document.getElementById(panel+"-panel").classList.add("show");document.getElementById(panel+"-panel").scrollIntoView({behavior:"smooth",block:"nearest"})}
+    function toggleTheme(button){document.getElementById("phone").classList.toggle("dark");button.classList.toggle("on")}
+    function faq(button){button.nextElementSibling.classList.toggle("show")}
+    document.getElementById("login-form").addEventListener("submit",e=>{e.preventDefault();go("home")});
+    document.getElementById("signup-form").addEventListener("submit",e=>{e.preventDefault();toast("Compte créé avec succès ✓");setTimeout(()=>go("home"),650)});
+
+    /* ===================== TRADUCTION FR / WOLOF / ENGLISH ===================== */
+    const dict={
+      "splash-kicker":{fr:"GREENTECH SÉNÉGALAISE",wo:"GREENTECH SENEGAL",en:"SENEGALESE GREENTECH"},
+      "splash-start":{fr:"Commencer",wo:"Dugël",en:"Get started"},
+      "skip":{fr:"Passer",wo:"Tey",en:"Skip"},
+      "next":{fr:"Suivant",wo:"Suivant",en:"Next"},
+      "on1-kicker":{fr:"01 — L'ENJEU",wo:"01 — LI CI AM SOLO",en:"01 — THE PROBLEM"},
+      "on1-title":{fr:"Chaque bouteille abandonnée compte.",wo:"Butéel bu nekk moo am solo.",en:"Every discarded bottle counts."},
+      "on1-copy":{fr:"À Dakar, le plastique peut devenir une ressource plutôt qu'un déchet.",wo:"Ci Dakar, plastik mën na doon jumtukaay, waxul barab wu tilim.",en:"In Dakar, plastic can become a resource instead of waste."},
+      "on2-kicker":{fr:"02 — LA SOLUTION",wo:"02 — WAXTAAN WI",en:"02 — THE SOLUTION"},
+      "on2-title":{fr:"Déposez. La borne fait le reste.",wo:"Def ko ci borne bi, moom moo koy fesal.",en:"Drop it off. The terminal does the rest."},
+      "on2-copy":{fr:"Nos bornes IoT détectent, pèsent et compactent vos bouteilles en quelques secondes.",wo:"Sunuy borne yu IoT dañuy gis, waajal ak dëj sa i buteel ci diir bu gàtt.",en:"Our IoT terminals detect, weigh and compact your bottles in seconds."},
+      "on3-kicker":{fr:"03 — LA RÉCOMPENSE",wo:"03 — PAYE BI",en:"03 — THE REWARD"},
+      "on3-title":{fr:"Votre geste se transforme en gain.",wo:"Sa jëf dina doon xaalis.",en:"Your action turns into earnings."},
+      "on3-copy":{fr:"Cumulez des points et recevez vos récompenses automatiquement via Mobile Money.",wo:"Dajale points, jot say paye ci Mobile Money ci lu bare.",en:"Collect points and receive your rewards automatically via Mobile Money."},
+      "on4-kicker":{fr:"04 — ENSEMBLE",wo:"04 — ÑEPP CI BENN",en:"04 — TOGETHER"},
+      "on4-title":{fr:"Dakar avance, bouteille après bouteille.",wo:"Dakar dafay jëm kanam, buteel ci buteel.",en:"Dakar moves forward, bottle by bottle."},
+      "on4-copy":{fr:"Relevez des défis, gagnez des badges Eco et rejoignez la communauté SETTAL.",wo:"Fexe ci coup yi, am say badge Eco te dugg ci mbootaay SETTAL.",en:"Take on challenges, earn Eco badges and join the SETTAL community."},
+      "on4-start":{fr:"Rejoindre SETTAL PAY",wo:"Dugg ci SETTAL PAY",en:"Join SETTAL PAY"},
+      "login-kicker":{fr:"BON RETOUR",wo:"DALAL AK DIAM",en:"WELCOME BACK"},
+      "login-title":{fr:"Votre impact vous attend.",wo:"Say jëf ngay xaar la.",en:"Your impact awaits you."},
+      "login-copy":{fr:"Connectez-vous pour retrouver vos points, défis et récompenses.",wo:"Dugg ngir gis say points, say coup ak say paye.",en:"Sign in to find your points, challenges and rewards."},
+      "name-label":{fr:"Nom complet",wo:"Sa tur wi",en:"Full name"},
+      "phone-label":{fr:"Numéro de téléphone",wo:"Limero telefon",en:"Phone number"},
+      "city-label":{fr:"Ville",wo:"Dëkk",en:"City"},
+      "login-button":{fr:"Se connecter",wo:"Dugg",en:"Log in"},
+      "signup-link":{fr:"Créer un compte",wo:"Sos sa kont",en:"Create an account"},
+      "or":{fr:"ou",wo:"walla",en:"or"},
+      "google-button":{fr:"Continuer avec Google",wo:"Jokkoo ak Google",en:"Continue with Google"},
+      "signup-kicker":{fr:"NOUVEAU MEMBRE",wo:"BOKK BU BEES",en:"NEW MEMBER"},
+      "signup-title":{fr:"Créez votre espace Eco.",wo:"Sos sa barab Eco.",en:"Create your Eco space."},
+      "signup-cgu":{fr:"J'accepte les conditions d'utilisation de SETTAL PAY.",wo:"Nangu naa yoonu jëfandikoo SETTAL PAY.",en:"I accept SETTAL PAY's terms of use."},
+      "signup-button":{fr:"Créer mon compte",wo:"Sos sama kont",en:"Create my account"},
+      "home-kicker":{fr:"MON ESPACE VERT",wo:"SAMA BARAB VERT",en:"MY GREEN SPACE"},
+      "home-greeting":{fr:"Bonjour",wo:"Nanga def",en:"Hello"},
+      "points-label":{fr:"Points disponibles",wo:"Points yi nga am",en:"Available points"},
+      "eco-level":{fr:"Eco Bronze",wo:"Eco Bronze",en:"Eco Bronze"},
+      "balance-label":{fr:"Solde récompenses",wo:"Xaalis bu des",en:"Rewards balance"},
+      "quick-title":{fr:"Actions rapides",wo:"Jëf yu gaaw",en:"Quick actions"},
+      "quick-scan":{fr:"Scanner QR Code",wo:"Scanner QR Code",en:"Scan QR Code"},
+      "quick-deposit":{fr:"Déposer une bouteille",wo:"Def buteel ci borne",en:"Drop off a bottle"},
+      "quick-challenges":{fr:"Défis de la semaine",wo:"Coup yi ci ayubés",en:"Weekly challenges"},
+      "quick-shop":{fr:"Récompenses",wo:"Paye yi",en:"Rewards"},
+      "weekly-title":{fr:"Défi de la semaine",wo:"Coup bi ci ayubés",en:"Challenge of the week"},
+      "weekly-copy":{fr:"Encore 8 bouteilles pour gagner +100 pts.",wo:"Des na 8 buteel ngir am +100 pts.",en:"8 more bottles to earn +100 pts."},
+      "scanner-kicker":{fr:"BORNE INTELLIGENTE",wo:"BORNE BU XAM XAM",en:"SMART TERMINAL"},
+      "scanner-title":{fr:"Scannez le QR Code",wo:"Scanner QR Code bi",en:"Scan the QR Code"},
+      "scanner-copy":{fr:"Placez le code de la borne dans le cadre.",wo:"Def code borne bi ci biir kaadar bi.",en:"Place the terminal's code inside the frame."},
+      "scanner-button":{fr:"Scanner maintenant",wo:"Scanner leegi",en:"Scan now"},
+      "terminal-kicker":{fr:"CONNEXION IOT",wo:"JOKKOO IOT",en:"IOT CONNECTION"},
+      "terminal-title":{fr:"Borne détectée",wo:"Gis nañu borne bi",en:"Terminal detected"},
+      "terminal-location":{fr:"Place de l'Indépendance · Plateau",wo:"Place de l'Indépendance · Plateau",en:"Place de l'Indépendance · Plateau"},
+      "terminal-status-label":{fr:"Statut",wo:"Statut",en:"Status"},
+      "terminal-status":{fr:"● Disponible",wo:"● Am na",en:"● Available"},
+      "terminal-capacity-label":{fr:"Capacité",wo:"Kapasite",en:"Capacity"},
+      "terminal-capacity":{fr:"42% remplie",wo:"42% fees na",en:"42% full"},
+      "continue":{fr:"Continuer",wo:"Gën ci kanam",en:"Continue"},
+      "deposit-kicker":{fr:"BORNE N°025",wo:"BORNE N°025",en:"TERMINAL N°025"},
+      "deposit-title":{fr:"Votre dépôt est en cours",wo:"Sa dépôt bi dafay dox",en:"Your deposit is in progress"},
+      "deposit-copy":{fr:"Placez vos bouteilles une à une dans la borne.",wo:"Def say buteel benn-benn ci borne bi.",en:"Place your bottles one by one in the terminal."},
+      "step1-text":{fr:"Vérification IA",wo:"Wone IA",en:"AI verification"},
+      "step2-text":{fr:"Pesée intelligente",wo:"Waajal bu xam xam",en:"Smart weighing"},
+      "step3-text":{fr:"Compactage",wo:"Dëj",en:"Compacting"},
+      "step4-text":{fr:"Validation du dépôt",wo:"Wone dépôt bi",en:"Deposit validation"},
+      "ai-kicker":{fr:"INTELLIGENCE ARTIFICIELLE",wo:"XAM-XAM ARTIFISYEL",en:"ARTIFICIAL INTELLIGENCE"},
+      "ai-title":{fr:"Analyse du plastique",wo:"Xool plastik bi",en:"Plastic analysis"},
+      "ai-type-label":{fr:"Type détecté",wo:"Xeetu plastik",en:"Detected type"},
+      "ai-confidence-label":{fr:"Confiance IA",wo:"Wóolu IA",en:"AI confidence"},
+      "ai-button":{fr:"Valider l'analyse",wo:"Wone analyse bi",en:"Validate analysis"},
+      "validation-kicker":{fr:"DÉPÔT VALIDÉ",wo:"DÉPÔT BI WONE NA",en:"DEPOSIT VALIDATED"},
+      "validation-title":{fr:"Excellent geste !",wo:"Jëf bu rafet !",en:"Great job!"},
+      "validation-copy":{fr:"Votre contribution a bien été enregistrée.",wo:"Sa jëf bi bind nañu ko.",en:"Your contribution has been recorded."},
+      "bottles-label":{fr:"bouteilles",wo:"buteel",en:"bottles"},
+      "weight-label":{fr:"poids",wo:"diis",en:"weight"},
+      "points-word":{fr:"points",wo:"points",en:"points"},
+      "see-reward":{fr:"Voir ma récompense",wo:"Gis sama paye",en:"See my reward"},
+      "reward-title":{fr:"Félicitations !",wo:"Njub ak yaa nga di !",en:"Congratulations!"},
+      "reward-copy":{fr:"Votre impact prend de la valeur.",wo:"Sa jëf dafay am solo.",en:"Your impact is gaining value."},
+      "reward-points":{fr:"+250 points",wo:"+250 points",en:"+250 points"},
+      "reward-equivalent":{fr:"Équivalent : 250 FCFA",wo:"Meññi na : 250 FCFA",en:"Equivalent: 250 FCFA"},
+      "reward-payment-title":{fr:"Comment recevoir votre gain ?",wo:"Naka nga bëgg jot sa xaalis ?",en:"How would you like to receive your reward?"},
+      "wave-button":{fr:"Recevoir via Wave",wo:"Jot ci Wave",en:"Receive via Wave"},
+      "orange-button":{fr:"Recevoir via Orange Money",wo:"Jot ci Orange Money",en:"Receive via Orange Money"},
+      "history-kicker":{fr:"VOS ACTIONS",wo:"SAY JËF",en:"YOUR ACTIONS"},
+      "history-title":{fr:"Historique",wo:"Istuwaar",en:"History"},
+      "filter-all":{fr:"Tous",wo:"Lépp",en:"All"},
+      "filter-month":{fr:"Ce mois",wo:"Weer wi",en:"This month"},
+      "map-kicker":{fr:"DAKAR",wo:"DAKAR",en:"DAKAR"},
+      "map-title":{fr:"Bornes proches",wo:"Borne yi jege",en:"Nearby terminals"},
+      "map-address":{fr:"Place de l'Indépendance · à 250 m",wo:"Place de l'Indépendance · 250 m",en:"Place de l'Indépendance · 250 m away"},
+      "route":{fr:"Itinéraire",wo:"Yoon wi",en:"Directions"},
+      "ranking-kicker":{fr:"COMMUNAUTÉ SETTAL",wo:"MBOOTAAY SETTAL",en:"SETTAL COMMUNITY"},
+      "ranking-title":{fr:"Les meilleurs recycleurs",wo:"Ñi gën a recycler",en:"Top recyclers"},
+      "challenges-kicker":{fr:"MOTIVATION",wo:"DOOLE",en:"MOTIVATION"},
+      "challenges-title":{fr:"Défis hebdomadaires",wo:"Coup yu ayubés",en:"Weekly challenges"},
+      "in-progress":{fr:"EN COURS",wo:"DAFAY DOX",en:"IN PROGRESS"},
+      "challenge-name":{fr:"20 bouteilles cette semaine",wo:"20 buteel ci ayubés bi",en:"20 bottles this week"},
+      "challenge-copy":{fr:"Débloquez 100 points bonus.",wo:"Am 100 points bonus.",en:"Unlock 100 bonus points."},
+      "challenge-progress":{fr:"12 / 20 bouteilles",wo:"12 / 20 buteel",en:"12 / 20 bottles"},
+      "challenge-time":{fr:"2 j 14 h restantes",wo:"2 fan 14 waxtu dëkk na",en:"2 d 14 h left"},
+      "challenge-two-title":{fr:"Explorateur de Dakar",wo:"Doxandeem Dakar",en:"Dakar Explorer"},
+      "challenge-two-copy":{fr:"Recyclez auprès de 3 bornes différentes.",wo:"Recycler ci 3 borne yu wuute.",en:"Recycle at 3 different terminals."},
+      "participate":{fr:"Participer",wo:"Bokk",en:"Participate"},
+      "shop-kicker":{fr:"VOS AVANTAGES",wo:"SAY NGËM",en:"YOUR PERKS"},
+      "shop-title":{fr:"Boutique de récompenses",wo:"Bitik paye yi",en:"Rewards shop"},
+      "shop-points":{fr:"Vous avez 1 250 points à utiliser.",wo:"Am nga 1 250 points ngir jëfandikoo.",en:"You have 1,250 points to spend."},
+      "exchange":{fr:"Échanger",wo:"Wecci",en:"Redeem"},
+      "profile-kicker":{fr:"MON COMPTE",wo:"SAMA KONT",en:"MY ACCOUNT"},
+      "profile-title":{fr:"Profil",wo:"Profil",en:"Profile"},
+      "your-level":{fr:"VOTRE NIVEAU",wo:"SA NIVO",en:"YOUR LEVEL"},
+      "co2-label":{fr:"CO₂ évité",wo:"CO₂ mucc",en:"CO₂ saved"},
+      "fcfa-label":{fr:"FCFA gagnés",wo:"FCFA yaam",en:"FCFA earned"},
+      "settings":{fr:"Paramètres",wo:"Aar yi",en:"Settings"},
+      "notifications":{fr:"Notifications",wo:"Xibaar yi",en:"Notifications"},
+      "support":{fr:"Assistance & FAQ",wo:"Ndimbal & FAQ",en:"Support & FAQ"},
+      "admin":{fr:"Aperçu administrateur",wo:"Xool administrateur",en:"Admin overview"},
+      "dark-mode":{fr:"Mode sombre",wo:"Mode lëndëm",en:"Dark mode"},
+      "language":{fr:"Langue",wo:"Làkk",en:"Language"},
+      "recent-notifications":{fr:"Notifications récentes",wo:"Xibaar yu bees",en:"Recent notifications"},
+      "notice1":{fr:"250 FCFA reçus via Wave aujourd'hui.",wo:"250 FCFA jot nañu ci Wave tey.",en:"250 FCFA received via Wave today."},
+      "notice2":{fr:"Nouveau défi : 20 bouteilles cette semaine.",wo:"Coup bu bees : 20 buteel ci ayubés bi.",en:"New challenge: 20 bottles this week."},
+      "support-heading":{fr:"Comment pouvons-nous aider ?",wo:"Naka nga bëgg ñu la dimbali ?",en:"How can we help?"},
+      "faq-search":{fr:"Rechercher une question",wo:"Seet benn laaj",en:"Search a question"},
+      "faq-q1":{fr:"Quand mes points apparaissent-ils ?",wo:"Kañ lay feeñ sama points ?",en:"When do my points appear?"},
+      "faq-a1":{fr:"Les points apparaissent automatiquement après validation du dépôt.",wo:"Points yi dañuy feeñ ci boppam bu dépôt bi wone.",en:"Points appear automatically once the deposit is validated."},
+      "faq-q2":{fr:"Comment recevoir mon argent ?",wo:"Naka lay jot sama xaalis ?",en:"How do I receive my money?"},
+      "faq-a2":{fr:"Choisissez Wave ou Orange Money sur l'écran de récompense.",wo:"Tann Wave walla Orange Money ci ekran paye bi.",en:"Choose Wave or Orange Money on the reward screen."},
+      "contact-support":{fr:"Contacter le support",wo:"Jokkoo ak ndimbal",en:"Contact support"},
+      "admin-heading":{fr:"Supervision des bornes",wo:"Xool borne yi",en:"Terminal supervision"},
+      "users-label":{fr:"utilisateurs",wo:"jëfandikukat",en:"users"},
+      "nav-home":{fr:"Accueil",wo:"Kër",en:"Home"},
+      "nav-scanner":{fr:"Scanner",wo:"Scanner",en:"Scanner"},
+      "nav-map":{fr:"Carte",wo:"Kart",en:"Map"},
+      "nav-history":{fr:"Historique",wo:"Istuwaar",en:"History"},
+      "nav-profile":{fr:"Profil",wo:"Profil",en:"Profile"},
+      "demo-note":{fr:"Environnement de démonstration : chiffres, cartes et prédictions simulés. Wave / Orange Money, IoT et IA réels relèvent de la phase de déploiement décrite dans le mémoire.",wo:"Barab bu natt : limu yi, kart yi ak xalaat yi ñu wone dañuy natt. Wave / Orange Money, IoT ak IA yu dëgg ñooy jëf ci yoonu jëfandikoo bi ñu wax ci mémoire bi.",en:"Demonstration environment: figures, maps and predictions are simulated. Real Wave / Orange Money, IoT and AI belong to the deployment phase described in the thesis."},
+      "x01":{fr:"Mon impact & IA",wo:"Sama jëf & IA",en:"My impact & AI"},
+      "x02":{fr:"Borne N°025",wo:"Borne N°025",en:"Terminal N°025"},
+      "x03":{fr:"PET recyclable",wo:"PET bu mën a recycler",en:"Recyclable PET"},
+      "x04":{fr:"15 juillet",wo:"15 sulet",en:"July 15"},
+      "x05":{fr:"12 bouteilles · Borne N°025",wo:"12 buteel · Borne N°025",en:"12 bottles · Terminal N°025"},
+      "x06":{fr:"12 juillet",wo:"12 sulet",en:"July 12"},
+      "x07":{fr:"5 bouteilles · Borne N°041",wo:"5 buteel · Borne N°041",en:"5 bottles · Terminal N°041"},
+      "x08":{fr:"07 juillet",wo:"07 sulet",en:"July 07"},
+      "x09":{fr:"8 bouteilles · Borne N°018",wo:"8 buteel · Borne N°018",en:"8 bottles · Terminal N°018"},
+      "x10":{fr:"Borne N°025 · Disponible",wo:"Borne N°025 · Am na",en:"Terminal N°025 · Available"},
+      "x11":{fr:"500 Mo Internet",wo:"500 Mo Internet",en:"500 MB Internet"},
+      "x12":{fr:"Bon d'achat",wo:"Bon bu jënd",en:"Voucher"},
+      "x13":{fr:"Don écologique",wo:"Jëw ekoloji",en:"Eco donation"},
+      "x14":{fr:"Financez la plantation d'un arbre.",wo:"Fey ngir ñu ji benn garab.",en:"Fund the planting of a tree."},
+      "x15":{fr:"DATA · IA · IMPACT",wo:"DATA · IA · IMPACT",en:"DATA · AI · IMPACT"},
+      "x16":{fr:"Mon impact, en données.",wo:"Sama jëf, ci xibaar yi.",en:"My impact, in data."},
+      "x17":{fr:"Impact personnel cumulé",wo:"Sama jëf bu mat",en:"Cumulative personal impact"},
+      "x18":{fr:"de plastique valorisé · 83 dépôts",wo:"plastik bu am solo · 83 dépôts",en:"of plastic recovered · 83 deposits"},
+      "x19":{fr:"CO₂ estimé évité",wo:"CO₂ bu ñu jàpp mucc",en:"Estimated CO₂ avoided"},
+      "x20":{fr:"Progression mensuelle",wo:"Yokkute weer wi",en:"Monthly growth"},
+      "x21":{fr:"↗ vs mois précédent",wo:"↗ ak weer wi jiitu",en:"↗ vs previous month"},
+      "x22":{fr:"Cette semaine",wo:"Ayubés bi",en:"This week"},
+      "x23":{fr:"Objectif 5 kg",wo:"Bëgg-bëgg 5 kg",en:"Goal 5 kg"},
+      "x24":{fr:"PRÉVISION IA",wo:"XAALAT IA",en:"AI FORECAST"},
+      "x25":{fr:"La borne N°025 devrait atteindre 80 % demain.",wo:"Borne N°025 dina fees 80 % suba.",en:"Terminal N°025 should reach 80% tomorrow."},
+      "x26":{fr:"Estimation basée sur les historiques de dépôts, les horaires d'affluence et le niveau de remplissage.",wo:"Natt bi dafay sukkandiku ci istuwaar yu dépôt yi, waxtu yu nit ñu bare ak ni borne bi fees.",en:"Estimate based on deposit history, peak hours and fill level."},
+      "x27":{fr:"Confiance du modèle : 78 %",wo:"Wóolu modèle bi : 78 %",en:"Model confidence: 78%"},
+      "x28":{fr:"ACTIVITÉ DES DÉPÔTS",wo:"JËF YI CI DÉPÔT",en:"DEPOSIT ACTIVITY"},
+      "x29":{fr:"7 derniers jours",wo:"7 fan yi mujj",en:"Last 7 days"},
+      "x30":{fr:"+14% volume",wo:"+14% yaatu",en:"+14% volume"},
+      "x31":{fr:"QUALITÉ DES DONNÉES",wo:"NJUBLU XIBAAR YI",en:"DATA QUALITY"},
+      "x32":{fr:"Traçabilité du dépôt",wo:"Toppatoo dépôt bi",en:"Deposit traceability"},
+      "x33":{fr:"97% fiable",wo:"97% wóor",en:"97% reliable"},
+      "x34":{fr:"Indicateur",wo:"Màndarga",en:"Indicator"},
+      "x35":{fr:"Valeur",wo:"Njëg",en:"Value"},
+      "x36":{fr:"État",wo:"Anam",en:"Status"},
+      "x37":{fr:"Poids mesuré",wo:"Diis bu ñu natt",en:"Measured weight"},
+      "x38":{fr:"✓ Validé",wo:"✓ Wone na",en:"✓ Validated"},
+      "x39":{fr:"Type matière",wo:"Xeetu matiyeer",en:"Material type"},
+      "x40":{fr:"Horodatage",wo:"Waxtu bi",en:"Timestamp"},
+      "x41":{fr:"✓ Traçable",wo:"✓ Toppatoo na",en:"✓ Traceable"},
+      "x42":{fr:"CENTRE D'INTELLIGENCE",wo:"XAAJU XAM-XAM",en:"INTELLIGENCE CENTRE"},
+      "x43":{fr:"Pilotage prédictif",wo:"Jëwriñ ci xaalat",en:"Predictive steering"},
+      "x44":{fr:"Remplissage prévu",wo:"Fees bu ñu xaar",en:"Expected fill"},
+      "x45":{fr:"Collecte prioritaire",wo:"Dajale bu jiitu",en:"Priority collection"},
+      "x46":{fr:"Anomalies détectées",wo:"Anomali yu ñu gis",en:"Anomalies detected"},
+      "x47":{fr:"Validation",wo:"Wone",en:"Validation"},
+      "x48":{fr:"Recommandation IA",wo:"Digël IA",en:"AI recommendation"},
+      "x49":{fr:"Planifier une tournée N°041 → N°025 avant 18h pour réduire le risque de saturation.",wo:"Waajal benn tournée N°041 → N°025 laata 18h ngir wàññi risk bu fees.",en:"Plan a round N°041 → N°025 before 6 pm to reduce the saturation risk."},
+      "x50":{fr:"CENTRE D'INTELLIGENCE",wo:"XAAJU XAM-XAM",en:"INTELLIGENCE CENTRE"},
+      "x51":{fr:"Prévision collecte",wo:"Xaalat dajale",en:"Collection forecast"},
+      "x52":{fr:"Prochaine tournée recommandée",wo:"Tournée bu ñu digël",en:"Next recommended round"},
+      "x53":{fr:"Borne N°041 · risque de saturation élevé · priorité logistique",wo:"Borne N°041 · risk bu fees bu ëpp · jiitu ci logistik",en:"Terminal N°041 · high saturation risk · logistics priority"},
+      "x54":{fr:"RAPPORT RSE",wo:"RAPPOR RSE",en:"CSR REPORT"},
+      "x55":{fr:"Matière collectée",wo:"Matiyeer bu ñu dajale",en:"Material collected"},
+      "x56":{fr:"Citoyens mobilisés",wo:"Dëkkandoo yu ñu ñoŋal",en:"Citizens mobilised"},
+      "x57":{fr:"CO₂ estimé",wo:"CO₂ bu ñu natt",en:"Estimated CO₂"},
+      "x58":{fr:"Générer un rapport",wo:"Sos benn rapport",en:"Generate a report"},
+      "x59":{fr:"Borne N°025 · Plateau",wo:"Borne N°025 · Plateau",en:"Terminal N°025 · Plateau"},
+      "x60":{fr:"Disponible · 42%",wo:"Am na · 42%",en:"Available · 42%"},
+      "x61":{fr:"Borne N°041 · Médina",wo:"Borne N°041 · Médina",en:"Terminal N°041 · Médina"},
+      "x62":{fr:"À vider · 89%",wo:"Wutal · 89%",en:"To empty · 89%"},
+      "fab-impact":{fr:"Impact & IA",wo:"Impact & IA",en:"Impact & AI"},
+      "sync-pill":{fr:"Données synchronisées",wo:"Xibaar yi ànd nañu",en:"Data synced"},
+      "priv-a":{fr:"Confidentialité :",wo:"Kaaraange :",en:"Privacy:"},
+      "priv-b":{fr:"les données personnelles sont séparées des données d'impact. Le prototype prévoit une gestion des accès par rôle et la traçabilité des opérations sensibles.",wo:"xibaar yu nit ak xibaar yu impact feddali nañu. Prototype bi dafay yoonal ñu mën a dugg ci rol ak toppatoo jëf yu sañ-sañ.",en:"personal data is kept separate from impact data. The prototype provides role-based access and traceability of sensitive operations."},
+      "fraud-a":{fr:"Anti-fraude :",wo:"Anti-fraude :",en:"Anti-fraud:"},
+      "fraud-b":{fr:"chaque dépôt peut être rapproché de la borne, de l'heure, du poids et de l'identifiant de transaction afin de détecter les doublons ou comportements anormaux.",wo:"dépôt bu nekk mën na ñu ko jubluloo ak borne bi, waxtu bi, diis bi ak limu transaction bi ngir gis ñaar-ñaar walla jëf yu baaxul.",en:"every deposit can be matched with the terminal, time, weight and transaction ID to detect duplicates or abnormal behaviour."},
+      "ok-ai":{fr:"✓ IA",wo:"✓ IA",en:"✓ AI"}
+    };
+    let currentLang="fr";
+    function setLanguage(lang,btn){
+      currentLang=lang;
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key=el.getAttribute("data-i18n");
+        if(dict[key]&&dict[key][lang]) el.textContent=dict[key][lang];
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+        const key=el.getAttribute("data-i18n-placeholder");
+        if(dict[key]&&dict[key][lang]) el.setAttribute("placeholder",dict[key][lang]);
+      });
+      document.querySelectorAll(".lang-btn").forEach(b=>{
+        b.classList.remove("active","bg-[#296740]","text-white","glass");
+        if(b.dataset.lang===lang){b.classList.add("active","bg-[#296740]","text-white")}
+        else{b.classList.add("glass")}
+      });
+      document.documentElement.lang=(lang==="wo"?"wo":lang==="en"?"en":"fr");
+      persistDemo();
+      if(btn){
+        const label={fr:"Français activé",wo:"Wolof activé",en:"English enabled"}[lang];
+        toast(label);
+      }
+    }
+
+    /* ===================== DATA / IA DEMO LAYER ===================== */
+    const demoData = {
+      deposits:[12,18,15,24,21,29,34],
+      forecast:{terminal:"N°025",tomorrowFill:80,confidence:78},
+      anomalies:3
+    };
+    function drawImpactChart(){
+      const c=document.getElementById("impactChart");
+      if(!c) return;
+      const ctx=c.getContext("2d"), d=demoData.deposits;
+      const w=c.clientWidth||330,h=125,ratio=window.devicePixelRatio||1;
+      c.width=w*ratio;c.height=h*ratio;ctx.setTransform(ratio,0,0,ratio,0,0);
+      ctx.clearRect(0,0,w,h);
+      const max=Math.max(...d)+5, pad=12, step=(w-pad*2)/(d.length-1);
+      const pt=(v,i)=>[pad+i*step,h-18-(v/max)*(h-35)];
+      // aire sous la courbe (vert -> transparent)
+      const area=ctx.createLinearGradient(0,0,0,h);area.addColorStop(0,"#3D865244");area.addColorStop(1,"#3D865200");
+      ctx.beginPath();d.forEach((v,i)=>{const [x,y]=pt(v,i);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});
+      ctx.lineTo(pad+(d.length-1)*step,h-18);ctx.lineTo(pad,h-18);ctx.closePath();ctx.fillStyle=area;ctx.fill();
+      // courbe : vert -> jaune (progression)
+      const line=ctx.createLinearGradient(pad,0,w-pad,0);line.addColorStop(0,"#3D8652");line.addColorStop(1,"#F3B706");
+      ctx.strokeStyle=line;ctx.lineWidth=3;ctx.lineJoin="round";ctx.lineCap="round";
+      ctx.beginPath();d.forEach((v,i)=>{const [x,y]=pt(v,i);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.stroke();
+      // points : verts, dernier point jaune (valeur la plus récente)
+      d.forEach((v,i)=>{const [x,y]=pt(v,i),last=i===d.length-1;
+        if(last){ctx.fillStyle="#F3B70633";ctx.beginPath();ctx.arc(x,y,9,0,Math.PI*2);ctx.fill()}
+        ctx.fillStyle=last?"#F3B706":"#296740";ctx.beginPath();ctx.arc(x,y,last?5:3.5,0,Math.PI*2);ctx.fill()});
+    }
+    window.addEventListener("resize",drawImpactChart);
+
+    // Simulated local persistence for a convincing prototype without pretending to be a production backend.
+    function persistDemo(){
+      try{
+        localStorage.setItem("settalpay_demo_state",JSON.stringify({
+          points:document.getElementById("points-display")?.textContent,
+          balance:document.getElementById("balance-display")?.textContent,
+          lang:currentLang
+        }));
+      }catch(e){}
+    }
+    function restoreDemo(){
+      try{
+        const raw=localStorage.getItem("settalpay_demo_state");
+        if(!raw)return;
+        const s=JSON.parse(raw);
+        if(s.points)document.getElementById("points-display").textContent=s.points;
+        if(s.balance)document.getElementById("balance-display").textContent=s.balance;
+        if(s.lang&&s.lang!=="fr")setLanguage(s.lang);
+      }catch(e){}
+    }
+
+    restoreDemo();
+    setTimeout(drawImpactChart,50);
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

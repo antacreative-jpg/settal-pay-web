@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "User": [
+      "id",
+      "phone_hash",
+      "city",
+      "language",
+      "level",
+      "created_at"
+    ],
+    "Terminal": [
+      "id",
+      "location",
+      "status",
+      "fill_level",
+      "last_sync_at"
+    ],
+    "Deposit": [
+      "id",
+      "user_id",
+      "terminal_id",
+      "material",
+      "weight_kg",
+      "points",
+      "timestamp"
+    ],
+    "Transaction": [
+      "id",
+      "deposit_id",
+      "provider",
+      "amount_fcfa",
+      "status",
+      "timestamp"
+    ],
+    "Impact": [
+      "user_id",
+      "plastic_kg",
+      "co2_kg_estimated",
+      "period"
+    ],
+    "Challenge": [
+      "id",
+      "title",
+      "target",
+      "reward_points",
+      "start_at",
+      "end_at"
+    ],
+    "Anomaly": [
+      "id",
+      "deposit_id",
+      "type",
+      "score",
+      "status",
+      "created_at"
+    ]
+  },
+  "ai_features": [
+    "fill_level_forecast",
+    "collection_volume_forecast",
+    "route_optimization",
+    "anomaly_detection",
+    "user_segmentation",
+    "rse_impact_reporting"
+  ]
+}
